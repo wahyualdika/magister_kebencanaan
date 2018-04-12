@@ -16,6 +16,8 @@
                     <th>Sumber Dana</th>
                     <th>Jumlah Dana</th>
                     <th>Jumlah Mahasiswa Terlibat</th>
+                    <th>Jumlah Mahasiswa Terkait</th>
+                    <th>Jumlah Mahasiswa Tidak Terkait</th>
                     <!-- Data -->
                     @foreach($datas as $data)
 
@@ -40,6 +42,8 @@
                             <td>{{ $data->sumberDana->nama_sumber }}</td>
                             <td>{{ $data->jumlah_dana }}</td>
                             <td>{{ $data->jumlah_mahasiswa}}</td>
+                            <td>{{$data->mhs_terkait}}</td>
+                            <td>{{$data->mhs_tdk_terkait}}</td>
                         </tr>
 
                     @endforeach

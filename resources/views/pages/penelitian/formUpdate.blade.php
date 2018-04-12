@@ -63,6 +63,14 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="exampleNIP">Mahasiswa Terkait</label>
+                            <input type="text" class="form-control p-input" value="{{$datas->mhs_terkait}}" name="mhsTerkait" id="terkait" placeholder="Mahasiswa Terkait Penelitian">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleNIP">Mahasiswa Tak Terkait</label>
+                            <input type="text" class="form-control p-input" value="{{$datas->mhs_tdk_terkait}}" name="mhsTakTerkait" id="takTerkait" placeholder="Mahasiswa Tak Terkait Penelitian">
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim</button>
                         </div>
                     </form>

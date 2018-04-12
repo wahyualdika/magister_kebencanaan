@@ -64,4 +64,10 @@ Route::prefix('penelitian')->group(function(){
     Route::get('/update/{id}/edit','PenelitianController@formUpdate')->name('admin.penelitian.formUpdate');
     Route::post('/update/{id}','PenelitianController@updatePenelitian')->name('admin.penelitian.update');
     Route::post('/delete/{id}','PenelitianController@deletePenelitian')->name('admin.penelitian.delete');
+
+    Route::get('/bimbingan/form','PenelitianController@formBimbingan')->name('admin.penelitian.inputBimbingan');
+    Route::post('/bimbingan/store','PenelitianController@storeBimbingan')->name('admin.penelitian.storeBimbingan');
+    Route::get('/bimbingan/view','PenelitianController@viewBimbingan')->name('admin.penelitian.viewBimbingan');
+    Route::get('/bimbingan/{id}/edit','PenelitianController@bimbinganFormUpdate')->name('admin.penelitian.bimbinganFormUpdate');
+    Route::get('/bimbingan/update/{id}','PenelitianController@bimbinganUpdate')->name('admin.penelitian.bimbinganUpdate');
 });

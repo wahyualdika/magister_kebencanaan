@@ -167,13 +167,23 @@
                         <div class="collapse" id="drop-penelitian">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.penelitian.daftar')}}">
                                         Lihat Daftar
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.penelitian.view')}}">
+                                        Lihat Daftar Penelitian
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.penelitian.inputForm')}}">
                                         Masukkan Penelitian
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.penelitian.inputBimbingan')}}">
+                                        Masukkan Bimbingan
                                     </a>
                                 </li>
                             </ul>

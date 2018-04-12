@@ -32,4 +32,9 @@ class Dosen extends Model
     {
         return $this->belongsToMany('App\Penelitian','dosen_penelitian','dosen_id','penelitian_id');
     }
+
+    public function bimbingan()
+    {
+        return $this->hasMany('App\PembimbingTesis');
+    }
 }
