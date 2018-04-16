@@ -78,6 +78,24 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <a href="{{route('penelitian.tampil.penelitianDgnMhs')}}">
+                                <div class="float-left">
+                                    <h4 class="text-danger">
+                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
+                                    </h4>
+                                </div>
+                                <div style="text-align: center">
+                                    <p class="card-text text-dark">Penelitian Dengan Melibatkan Mahasiswa</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

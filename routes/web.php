@@ -78,4 +78,5 @@ Route::prefix('penelitian')->group(function(){
     Route::get('/daftarTampil/dosenTetap','PenelitianController@penenlitianDosenTetap')->name('penelitian.tampil.dosenTetap');
     Route::get('/daftarTampil/jumlahDanaPenelitian','PenelitianController@jumlahDanaPenelitian')->name('penelitian.tampil.jumlahDanaPenelitian');
     Route::get('/daftarTampil/penelitianTesis','PenelitianController@bimbinganList')->name('penelitian.tampil.bimbinganTesis');
+    Route::get('/daftarTampil/penelitianDgnMhs','PenelitianController@penelitianDgnMhs')->name('penelitian.tampil.penelitianDgnMhs');
 });

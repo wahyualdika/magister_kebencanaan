@@ -208,4 +208,10 @@ class PenelitianController extends Controller
         $bimbingans = PembimbingTesis::all();
         return view('pages.penelitian.bimbinganTesisList')->withBimbingans($bimbingans);
     }
+
+    public function penelitianDgnMhs()
+    {
+        $datas = Penelitian::all();
+        return view('pages.penelitian.listPenelitianDgnMhs')->withDatas($datas);
+    }
 }
