@@ -9,7 +9,7 @@
                 <div class="card card-statistics">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="{{route('admin.publikasi.view')}}">
+                            <a href="{{route('publikasi.tampil.listPublikasi')}}">
                                 <div class="float-left">
                                     <h4 class="text-danger">
                                         <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>

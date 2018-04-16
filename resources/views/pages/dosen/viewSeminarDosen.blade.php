@@ -36,8 +36,13 @@
                             <td>{{ $data->tahun }}</td>
                             <td>{{ $data->role->status}}</td>
                         </tr>
-
                     @endforeach
+                    <tr>
+                        <td style="font-weight: bold;text-align: center;">Total Dosen Sebagai Penyaji : {{ $rolearr[0] }}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;text-align: center;">Total Dosen Sebagai Peserta : {{ $rolearr[1] }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

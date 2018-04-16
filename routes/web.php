@@ -54,6 +54,9 @@ Route::prefix('publikasi')->group(function(){
     Route::get('/update/{id}/edit','PublikasiController@formUpdate')->name('admin.publikasi.formUpdate');
     Route::post('/update/{id}','PublikasiController@updatePublikasi')->name('admin.publikasi.update');
     Route::post('/delete/{id}','PublikasiController@deletePublikasi')->name('admin.publikasi.delete');
+
+    //butir publikasi
+    Route::get('/daftarTampil/listPublikasi','PublikasiController@listPublikasi')->name('publikasi.tampil.listPublikasi');
 });
 
 Route::prefix('penelitian')->group(function(){
@@ -70,4 +73,9 @@ Route::prefix('penelitian')->group(function(){
     Route::get('/bimbingan/view','PenelitianController@viewBimbingan')->name('admin.penelitian.viewBimbingan');
     Route::get('/bimbingan/{id}/edit','PenelitianController@bimbinganFormUpdate')->name('admin.penelitian.bimbinganFormUpdate');
     Route::get('/bimbingan/update/{id}','PenelitianController@bimbinganUpdate')->name('admin.penelitian.bimbinganUpdate');
+
+    //bagian butir penelitian
+    Route::get('/daftarTampil/dosenTetap','PenelitianController@penenlitianDosenTetap')->name('penelitian.tampil.dosenTetap');
+    Route::get('/daftarTampil/jumlahDanaPenelitian','PenelitianController@jumlahDanaPenelitian')->name('penelitian.tampil.jumlahDanaPenelitian');
+    Route::get('/daftarTampil/penelitianTesis','PenelitianController@bimbinganList')->name('penelitian.tampil.bimbinganTesis');
 });

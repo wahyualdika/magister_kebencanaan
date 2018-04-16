@@ -214,12 +214,18 @@ class DosenController extends Controller
 
     public function viewSeminarDosen()
     {
+        $penyaji = Seminar::where('seminar_role_id',1)->count();
+        $peserta = Seminar::where('seminar_role_id',2)->count();
+        $rolearr = array();
+        $rolearr[0] = $penyaji;
+        $rolearr[1] = $peserta;
         $datas = Seminar::all();
-        return view('pages.dosen.viewSeminarDosen')->withDatas($datas);
+        return view('pages.dosen.viewSeminarDosen')->withDatas($datas)->withRolearr($rolearr);
     }
 
     public function kegiatanSeminarDosen()
     {
+
         $datas      = Dosen::where('status',1)->orderBy('nama','desc')->get();
         $roles      = RoleSeminar::all();
         $kegiatans  = JenisKegiatan::all();

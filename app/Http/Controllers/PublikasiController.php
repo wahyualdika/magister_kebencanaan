@@ -100,4 +100,17 @@ class PublikasiController extends Controller
         $datas->delete();
         return redirect()->route('admin.publikasi.view');
     }
+
+    public function listPublikasi()
+    {
+        $publikasis = Publikasi::all();
+        $tingkat = array();
+        $lokal = Publikasi::where('tingkat_id',1)->count();
+        $nasional = Publikasi::where('tingkat_id',2)->count();
+        $internasional = Publikasi::where('tingkat_id',3)->count();
+        $tingkat[0] = $lokal;
+        $tingkat[1] = $nasional;
+        $tingkat[2] = $internasional;
+        return view('pages.publikasi.listPublikasi')->withPublikasis($publikasis)->withTingkat($tingkat);
+    }
 }

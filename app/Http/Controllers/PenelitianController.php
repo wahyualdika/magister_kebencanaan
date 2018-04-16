@@ -171,4 +171,41 @@ class PenelitianController extends Controller
 
         return  redirect()->route('admin.penelitian.viewBimbingan');
     }
+
+    public function penenlitianDosenTetap()
+    {
+        $danas = SumberDana::all();
+        $time = new \DateTime('now');
+        $newtime= $time->modify('-0 year' )->format('Y');
+        $newtime1 = $time->modify('-1 year')->format('Y');
+        $newtime2 = $time->modify('-1 year')->format('Y');
+        $i=1;
+        $biaya=array();
+        $jumlah = array();
+
+       for ($k = 0;$k<5; $k++) {
+               $ts  = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime)->count();
+               $ts1 = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime1)->count();
+               $ts2 = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime2)->count();
+               $biaya[$k][0] = $ts;
+               $biaya[$k][1] = $ts1;
+               $biaya[$k][2] = $ts2;
+               $i++;
+               $jumlah[$k] = $ts+$ts2+$ts1;
+       }
+       return view('pages.penelitian.penelitianDosen')->withBiaya($biaya)->withDanas($danas)->withJumlah($jumlah);
+    }
+
+    public function jumlahDanaPenelitian()
+    {
+        $penelitians = Penelitian::all();
+        $avg = Penelitian::avg('jumlah_dana');
+        return view('pages.penelitian.jumlahDanaPenelitian')->withPenelitians($penelitians)->withAvg($avg);
+    }
+
+    public function bimbinganList()
+    {
+        $bimbingans = PembimbingTesis::all();
+        return view('pages.penelitian.bimbinganTesisList')->withBimbingans($bimbingans);
+    }
 }
