@@ -102,7 +102,7 @@ class DosenController extends Controller
         $data->dosen_id = $request->nama;
         $data->save();
 
-        return redirect()->route('admin.dosen.index');
+        return redirect()->route('admin.dosenPrestasi.view');
     }
 
     public function editPrestasiForm($id)
@@ -134,8 +134,15 @@ class DosenController extends Controller
 
     public function viewPrestasiDosen()
     {
+        $tingkats = array();
+        $lokal = Prestasi::where('tingkat_id',1)->count();
+        $nasional = Prestasi::where('tingkat_id',2)->count();
+        $internasional =Prestasi::where('tingkat_id',3)->count();
+        $tingkats[0] = $lokal;
+        $tingkats[1] = $nasional;
+        $tingkats[2] = $internasional;
         $datas = Prestasi::all();
-        return view('pages.dosen.viewPrestasiDosen')->withDatas($datas);
+        return view('pages.dosen.viewPrestasiDosen')->withDatas($datas)->withTingkats($tingkats);
     }
 
     public function deletePrestasi($id)
@@ -201,8 +208,13 @@ class DosenController extends Controller
 
     public function viewPengalamanDosen()
     {
+        $tingkats = array();
+        $nasional = Pengalaman::where('tingkat_id',2)->count();
+        $internasional =Pengalaman::where('tingkat_id',3)->count();
+        $tingkats[0] = $nasional;
+        $tingkats[1] = $internasional;
         $datas = Pengalaman::all();
-        return view('pages.dosen.viewPengalamanDosen')->withDatas($datas);
+        return view('pages.dosen.viewPengalamanDosen')->withDatas($datas)->withTingkats($tingkats);
     }
 
     public function deletePengalaman($id)

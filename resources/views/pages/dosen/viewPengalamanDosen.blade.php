@@ -38,8 +38,13 @@
                             <td>{{ $data->tingkat->nama }}</td>
 
                         </tr>
-
-                        @endforeach
+                     @endforeach
+                    <tr>
+                        <td>Total Pengalaman Tingkat Nasional: {{ $tingkats[0] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Pengalaman Tingkat Internasional : {{ $tingkats[1] }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

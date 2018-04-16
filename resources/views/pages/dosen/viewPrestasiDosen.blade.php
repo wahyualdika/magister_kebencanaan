@@ -34,8 +34,16 @@
                             <td>{{ $data->dosen->nama }}</td>
                             <td>{{ $data->tingkat->nama }}</td>
                         </tr>
-
                         @endforeach
+                                <tr>
+                                    <td>Total Prestasi Tingkat Lokal: {{ $tingkats[0] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Prestasi Tingkat Nasional : {{ $tingkats[1] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Prestasi Tingkat Intersional : {{ $tingkats[2] }}</td>
+                                </tr>
                         </tbody>
                 </table>
             </div>
