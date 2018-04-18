@@ -30,7 +30,6 @@
                     @php($kt = 0)
                     @php($ag = 0)
                     @foreach($bimbingans as $bimbingan)
-
                         <tr>
                             <td>{{ $k }}</td>
                             <td>{{ $bimbingan->dosen->nama}}</td>

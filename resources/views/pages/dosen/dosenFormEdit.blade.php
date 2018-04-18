@@ -48,10 +48,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleJabatanAkademik">Jabatan Akademik</label>
-                            <input type="text" class="form-control p-input" value="{{ $data->jabatan_akademik }}" name="jabatanAkademik" id="exampleInputJabatanAkademik" placeholder="Jabatan Akademik">
+
+                        <div class="form-group"><label for="exampleS1">Jabatan Akademik</label>
+                            <select class="select2-multi form-control" name="jabatanAkademik">
+                                <option value="{{$data->jabatanAkademik->id}}">{{$data->jabatanAkademik->nama}}</option>
+                                @foreach($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}">{{$jabatan->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="form-group"><label for="exampleS1">Data S1</label>
                             <div class="form-group">
                                 <label for="exampleNIP">Gelar Akedemik S1</label>

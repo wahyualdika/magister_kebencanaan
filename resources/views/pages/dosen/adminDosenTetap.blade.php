@@ -21,7 +21,7 @@
                         <tr>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->nidn}}</td>
-                            <td>{{ $data->jabatan_akademik }}</td>
+                            <td>{{ $data->jabatanAkademik->nama }}</td>
                             @if($data->sertifikasi === 1)
                                 <td>Ada Sertifikasi</td>
                             @endif
@@ -43,7 +43,12 @@
                         </tr>
                         </tbody>
                         @endforeach
-                        </tbody>
+                    <tr>
+                        <td>Total Guru Besar    : {{$guru}}</td>
+                        <td>Total Lektor Kepala : {{$kepala}}</td>
+                        <td>Total Dosen S3      : {{$s3}}</td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

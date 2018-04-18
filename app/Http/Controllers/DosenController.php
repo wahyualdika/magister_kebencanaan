@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dosen;
+use App\JabatanAkademik;
 use App\JenisKegiatan;
 use App\Pengalaman;
 use App\Prestasi;
@@ -27,7 +28,8 @@ class DosenController extends Controller
 
     public function formDosen()
     {
-        return view('pages.dosen.adminDosenForm');
+        $jabatans = JabatanAkademik::all();
+        return view('pages.dosen.adminDosenForm')->withJabatans($jabatans);
     }
 
     public function store(Request $request)
@@ -43,7 +45,7 @@ class DosenController extends Controller
         $data->nidn = $request->nidn;
         $data->tanggal_lahir  = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
         //$data->tanggal_lahir = $request->tanggalLahir;
-        $data->jabatan_akademik = $request->jabatanAkademik;
+        $data->jabatan_akademik_id = $request->jabatanAkademik;
         $data->gelar_akademik_s1 = $request->gelars1;
         $data->asal_pt_s1 = $request->asals1;
         $data->bidang_keahlian_s1 = $request->keahlians1;
@@ -63,8 +65,9 @@ class DosenController extends Controller
 
     public function editForm($id){
         $data = Dosen::find($id);
+        $jabatans = JabatanAkademik::all();
         //dd($data);
-        return view('pages.dosen.dosenFormEdit')->withData($data);
+        return view('pages.dosen.dosenFormEdit')->withData($data)->withJabatans($jabatans);
     }
 
     public function viewDosenTidakTetap()
@@ -76,7 +79,13 @@ class DosenController extends Controller
     public function viewDosenTetap()
     {
         $datas = Dosen::where('status',1)->orderBy('nama','desc')->get();
-        return view('pages.dosen.adminDosenTetap')->withDatas($datas);
+        $guru = Dosen::where('jabatan_akademik_id',1)->count();
+        $kepala = Dosen::where('jabatan_akademik_id',2)->count();
+        $s3 = Dosen::where('gelar_akademik_s3','!=',null)->count();
+        return view('pages.dosen.adminDosenTetap')->withDatas($datas)
+                                                        ->withGuru($guru)
+                                                        ->withKepala($kepala)
+                                                        ->withS3($s3);
     }
 
     public function prestasiDosen()
@@ -267,6 +276,13 @@ class DosenController extends Controller
         return redirect()->route('admin.dosenSeminar.view');
     }
 
+    public function deleteKegiatanSeminar($id)
+    {
+        $data = Seminar::find($id);
+        $data->delete();
+        return redirect()->route('admin.dosenSeminar.view');
+    }
+
 
     public function update(Request $request,$id)
     {
@@ -280,7 +296,7 @@ class DosenController extends Controller
         $data->nidn = $request->nidn;
         $data->tanggal_lahir  = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
         //$data->tanggal_lahir = $request->tanggalLahir;
-        $data->jabatan_akademik = $request->jabatanAkademik;
+        $data->jabatan_akademik_id = $request->jabatanAkademik;
         $data->gelar_akademik_s1 = $request->gelars1;
         $data->asal_pt_s1 = $request->asals1;
         $data->bidang_keahlian_s1 = $request->keahlians1;
@@ -305,6 +321,10 @@ class DosenController extends Controller
         //File::delete($post->gambar);
         $post->prestasi()->delete();
         $post->pengalaman()->delete();
+        $post->seminar()->delete();
+        $post->bimbingan()->delete();
+        $post->publikasi()->detach();
+        $post->penelitian()->detach();
         $post->delete();
         return redirect()->route('admin.dosen.index');
     }

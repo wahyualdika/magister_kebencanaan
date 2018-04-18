@@ -19,8 +19,8 @@
                     @foreach($datas as $data)
 
                         <tr>
-                            <form class="forms-sample" action="#"  method="post">
-                                {{--{{ csrf_field() }}--}}
+                            <form class="forms-sample" action="{{url('dosen/seminar/delete/'.$data->id)}}"  method="post">
+                                {{ csrf_field() }}
                                 <td style="text-align: center">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
@@ -30,7 +30,7 @@
                                 </td>
                             </form>
 
-                            <td>{{ $data->dosen->nama}}</td>
+                            <td>{{ $data->dosen->nama }}</td>
                             <td>{{ $data->jenis->jenis }}</td>
                             <td>{{ $data->tempat }}</td>
                             <td>{{ $data->tahun }}</td>

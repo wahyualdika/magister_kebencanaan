@@ -25,8 +25,8 @@
                     @foreach($datas as $data)
 
                         <tr>
-                            <form class="forms-sample" action="#"  method="post">
-                                {{--{{ csrf_field() }}--}}
+                            <form class="forms-sample" action="{{url('penelitian/bimbingan/delete/'.$data->id)}}"  method="post">
+                                {{ csrf_field() }}
                                 <td style="text-align: center">
                                     <div class="btn-group">
                                         <a href="{{url('penelitian/bimbingan/'.$data->id.'/edit')}}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
@@ -36,8 +36,8 @@
                                 </td>
                             </form>
                             <td>{{ $data->dosen->nama}}</td>
-                            <td>{{ $data->pendidikan_tertinggi}}</td>
-                            <td>{{ $data->jabatan_akademik }}</td>
+                            <td>S{{ $data->pendidikan_tertinggi}}</td>
+                            <td>{{ $data->jabatan->nama }}</td>
                             <td>
                                 <table class="milestone-table">
                                     <tr>

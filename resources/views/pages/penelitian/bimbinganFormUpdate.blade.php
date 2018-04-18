@@ -20,21 +20,18 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-4">Penelitian Dosen</h5>
-                    <form class="forms-sample" action="{{route('admin.penelitian.storeBimbingan')}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('admin.penelitian.bimbinganUpdate',['id'=>$datas->id])}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <div class="form-group">
+                        <div class="form-group" id="nama">
                             <label for="exampleS1">Nama Dosen Pembimbing</label>
-                            <select class="select2-multi form-control" name="nama">
+                            <select class="select2-multi form-control" name="nama" readonly="true">
                                 <option value="{{$datas->dosen->id}}">{{$datas->dosen->nama}}</option>
-                                @foreach($dosens as $dosen)
-                                    <option value="{{ $dosen->id }}">{{ $dosen->nama }}</option>
-                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="pendidikan">Pendidikan Tertinggi</label>
                             <select class="form-control" name="pendidikan">
-                                <option value="{{$datas->pendidikan_tertinggi}}">{{$datas->pendidikan_tertinggi}}</option>
+                                <option value="{{$datas->pendidikan_tertinggi}}">S{{$datas->pendidikan_tertinggi}}</option>
                                 @for ($i = 1; $i < 4; $i++)
                                     <option value="{{$i}}">S{{$i}}</option>
                                 @endfor
@@ -42,7 +39,9 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Jabatan Akademik</label>
-                            <input type="text" class="form-control p-input" value="{{$datas->jabatan_akademik}}" name="jabatan" id="jabatan" placeholder="Jabatan Akademik">
+                            <select class="form-control" name="jabatan" readonly="true">
+                                <option value="{{$datas->jabatan->id}}">{{$datas->jabatan->nama}}</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Banyak Mahasiswa Dibimbing Sebagai Ketua</label>

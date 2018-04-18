@@ -61,7 +61,8 @@
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->nidn}}</td>
                     <td>{{ $data->tanggal_lahir }}</td>
-                    <td>{{ $data->jabatan_akademik }}</td>
+                    <td>{{ $data->jabatanAkademik->nama}}</td>
+
                     @if($data->sertifikasi === 1)
                         <td>Ada Sertifikasi</td>
                     @endif

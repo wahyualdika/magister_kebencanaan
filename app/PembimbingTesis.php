@@ -12,4 +12,9 @@ class PembimbingTesis extends Model
     {
         return $this->belongsTo('App\Dosen');
     }
+
+    public function jabatan()
+    {
+        return $this->belongsTo('App\JabatanAkademik','jabatan_akademik_id');
+    }
 }

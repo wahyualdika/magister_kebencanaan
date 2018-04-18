@@ -41,7 +41,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Jabatan Akademik</label>
-                            <input type="text" class="form-control p-input" name="jabatan" id="jabatan" placeholder="Jabatan Akademik">
+                            <select class="form-control" name="jabatan">
+                                <option value="">Jabatan Akademik</option>
+                                @foreach($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}">{{$jabatan->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Banyak Mahasiswa Dibimbing Sebagai Ketua</label>

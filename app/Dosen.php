@@ -37,4 +37,9 @@ class Dosen extends Model
     {
         return $this->hasMany('App\PembimbingTesis');
     }
+
+    public function jabatanAkademik()
+    {
+        return $this->belongsTo('App\JabatanAkademik','jabatan_akademik_id');
+    }
 }

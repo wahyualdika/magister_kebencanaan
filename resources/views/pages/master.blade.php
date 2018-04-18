@@ -177,6 +177,11 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.penelitian.viewBimbingan')}}">
+                                        Lihat Daftar Bimbingan
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.penelitian.inputForm')}}">
                                         Masukkan Penelitian
                                     </a>
@@ -199,6 +204,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.publikasi.daftar')}}">
                                         Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.publikasi.view')}}">
+                                        Lihat Daftar Publikasi
                                     </a>
                                 </li>
                                 <li class="nav-item">

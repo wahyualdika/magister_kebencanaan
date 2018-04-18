@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dosen;
+use App\JabatanAkademik;
 use App\PembimbingTesis;
 use App\Penelitian;
 use App\SumberDana;
@@ -105,6 +106,7 @@ class PenelitianController extends Controller
     public function deletePenelitian($id)
     {
         $datas = Penelitian::find($id);
+        $datas->dosen()->detach();
         $datas->delete();
         return redirect()->route('admin.penelitian.view');
     }
@@ -120,7 +122,8 @@ class PenelitianController extends Controller
     public function formBimbingan()
     {
         $dosens = Dosen::all();
-        return view('pages.penelitian.bimbinganInput')->withDosens($dosens);
+        $jabatans = JabatanAkademik::all();
+        return view('pages.penelitian.bimbinganInput')->withDosens($dosens)->withJabatans($jabatans);
     }
 
     public function storeBimbingan(Request $request)
@@ -136,7 +139,7 @@ class PenelitianController extends Controller
         $data = new PembimbingTesis();
         $data->dosen_id = $request->nama;
         $data->pendidikan_tertinggi = $request->pendidikan;
-        $data->jabatan_akademik = $request->jabatan;
+        $data->jabatan_akademik_id = $request->jabatan;
         $data->pembimbing_sbg_ketua = $request->jumlahMahasiswaKT;
         $data->pembimbing_sbg_anggota= $request->jumlahMahasiswaAG;
         $data->save();
@@ -147,8 +150,9 @@ class PenelitianController extends Controller
     public function bimbinganFormUpdate($id)
     {
         $dosens = Dosen::all();
+        $jabatans = JabatanAkademik::all();
         $datas = PembimbingTesis::find($id);
-        return view('pages.penelitian.bimbinganFormUpdate')->withDosens($dosens)->withDatas($datas);
+        return view('pages.penelitian.bimbinganFormUpdate')->withDosens($dosens)->withDatas($datas)->withJabatans($jabatans);
     }
 
     public function bimbinganUpdate(Request $request,$id)
@@ -164,12 +168,19 @@ class PenelitianController extends Controller
         $data = PembimbingTesis::find($id);
         $data->dosen_id = $request->nama;
         $data->pendidikan_tertinggi = $request->pendidikan;
-        $data->jabatan_akademik = $request->jabatan;
+        $data->jabatan_akademik_id = $request->jabatan;
         $data->pembimbing_sbg_ketua = $request->jumlahMahasiswaKT;
         $data->pembimbing_sbg_anggota= $request->jumlahMahasiswaAG;
         $data->save();
 
         return  redirect()->route('admin.penelitian.viewBimbingan');
+    }
+
+    public function deleteBimbingan($id)
+    {
+        $data = PembimbingTesis::find($id);
+        $data->delete();
+        return redirect()->route('admin.penelitian.viewBimbingan');
     }
 
     public function penenlitianDosenTetap()

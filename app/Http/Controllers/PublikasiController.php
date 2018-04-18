@@ -97,6 +97,7 @@ class PublikasiController extends Controller
     public function deletePublikasi($id)
     {
         $datas = Publikasi::find($id);
+        $datas->dosen()->detach();
         $datas->delete();
         return redirect()->route('admin.publikasi.view');
     }

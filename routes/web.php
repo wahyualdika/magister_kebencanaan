@@ -44,6 +44,7 @@ Route::prefix('dosen')->group(function(){
     Route::get('/seminar/form','DosenController@kegiatanSeminarDosen')->name('admin.dosen.seminar');
     Route::get('/seminar/view','DosenController@viewSeminarDosen')->name('admin.dosenSeminar.view');
     Route::post('/seminar/simpan','DosenController@storeKegiatanSeminar')->name('admin.seminar.store');
+    Route::post('/seminar/delete/{id}','DosenController@deleteKegiatanSeminar')->name('admin.seminar.delete');
 });
 
 Route::prefix('publikasi')->group(function(){
@@ -68,11 +69,13 @@ Route::prefix('penelitian')->group(function(){
     Route::post('/update/{id}','PenelitianController@updatePenelitian')->name('admin.penelitian.update');
     Route::post('/delete/{id}','PenelitianController@deletePenelitian')->name('admin.penelitian.delete');
 
+    //Bimbingan Penelitian
     Route::get('/bimbingan/form','PenelitianController@formBimbingan')->name('admin.penelitian.inputBimbingan');
     Route::post('/bimbingan/store','PenelitianController@storeBimbingan')->name('admin.penelitian.storeBimbingan');
     Route::get('/bimbingan/view','PenelitianController@viewBimbingan')->name('admin.penelitian.viewBimbingan');
     Route::get('/bimbingan/{id}/edit','PenelitianController@bimbinganFormUpdate')->name('admin.penelitian.bimbinganFormUpdate');
-    Route::get('/bimbingan/update/{id}','PenelitianController@bimbinganUpdate')->name('admin.penelitian.bimbinganUpdate');
+    Route::post('/bimbingan/update/{id}','PenelitianController@bimbinganUpdate')->name('admin.penelitian.bimbinganUpdate');
+    Route::post('/bimbingan/delete/{id}','PenelitianController@deleteBimbingan')->name('admin.penelitian.bimbinganDelete');
 
     //bagian butir penelitian
     Route::get('/daftarTampil/dosenTetap','PenelitianController@penenlitianDosenTetap')->name('penelitian.tampil.dosenTetap');
