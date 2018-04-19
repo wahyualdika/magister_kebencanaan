@@ -45,6 +45,14 @@ Route::prefix('dosen')->group(function(){
     Route::get('/seminar/view','DosenController@viewSeminarDosen')->name('admin.dosenSeminar.view');
     Route::post('/seminar/simpan','DosenController@storeKegiatanSeminar')->name('admin.seminar.store');
     Route::post('/seminar/delete/{id}','DosenController@deleteKegiatanSeminar')->name('admin.seminar.delete');
+
+    //Aktivitas Dosen
+    Route::get('/aktivitas/form','DosenController@aktivitasDosenForm')->name('admin.dosen.aktivitas');
+    Route::get('/aktivitas/view','DosenController@aktivitasDosenView')->name('admin.dosen.aktivitasView');
+    Route::post('/aktivitas/store','DosenController@aktivitasDosenStore')->name('admin.dosen.aktivitasStore');
+    Route::get('/aktivitas/{id}/edit','DosenController@aktivitasUpdateForm')->name('admin.dosen.aktivitasUpdate');
+    Route::post('/aktivitas/update/{id}','DosenController@aktivitasDosenUpdate')->name('admin.dosen.aktivitasUpdate');
+    Route::post('/aktivitas/delete/{id}','DosenController@aktivitasDosenDelete')->name('admin.dosen.aktivitasDelete');
 });
 
 Route::prefix('publikasi')->group(function(){

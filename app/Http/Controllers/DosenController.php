@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AktivitasDosen;
 use App\Dosen;
 use App\JabatanAkademik;
 use App\JenisKegiatan;
@@ -314,6 +315,94 @@ class DosenController extends Controller
         return redirect()->route('admin.dosen.index');
     }
 
+    //Aktivitas Dosen
+    public function aktivitasDosenView()
+    {
+        $jumlah = array();
+        $count = AktivitasDosen::all()->count();
+        /*for($i=0;$i<2;$i++)
+        {
+            for ($k=0;$l<$count;$k++)
+            $jumlah[$i][$k] = AktivitasDosen::where
+        }*/
+        $datas = AktivitasDosen::all();
+        return view('pages.dosen.aktivitasDosenView')->withDatas($datas);
+    }
+
+    public function aktivitasDosenForm()
+    {
+        $dosens = Dosen::where('status',1)->get();
+        return view('pages.dosen.aktivitasDosenInput')->withDosens($dosens);
+    }
+
+    public function aktivitasDosenStore(Request $request)
+    {
+        $this->validate($request,array(
+            'nama' => 'required|max:255',
+            'pengajaranPsSendiri'  => 'required|max:255',
+            'pengajaranPsLain'  => 'required|max:255',
+            'pengajaranPtLain'  => 'required|max:255',
+            'sksPenelitian'  => 'required|max:255',
+            'sksPengabdian'  => 'required|max:255',
+            'manajemenPtSendiri'  => 'required|max:255',
+            'manajemenPtLain'  => 'required|max:255',
+        ));
+
+        $data = new AktivitasDosen();
+        $data->dosen_id = $request->nama;
+        $data->sks_ps_sendiri = $request->pengajaranPsSendiri;
+        $data->sks_ps_lain = $request->pengajaranPsLain;
+        $data->sks_ps_ptLain = $request->pengajaranPtLain;
+        $data->sks_penelitian = $request->sksPenelitian;
+        $data->sks_pengabdian_masyarakat = $request->sksPengabdian;
+        $data->sks_manajemen_ptSendiri = $request->manajemenPtSendiri;
+        $data->sks_manajemen_ptLain =  $request->manajemenPtLain;
+
+        $data->save();
+        return redirect()->route('admin.dosen.aktivitasView');
+    }
+
+    public function aktivitasUpdateForm($id)
+    {
+        $dosens = Dosen::where('status',1)->get();
+        $data = AktivitasDosen::find($id);
+        return view('pages.dosen.aktivitasDosenUpdate')->withDosens($dosens)->withData($data);
+    }
+
+    public function aktivitasDosenUpdate(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'nama' => 'required|max:255',
+            'pengajaranPsSendiri'  => 'required|max:255',
+            'pengajaranPsLain'  => 'required|max:255',
+            'pengajaranPtLain'  => 'required|max:255',
+            'sksPenelitian'  => 'required|max:255',
+            'sksPengabdian'  => 'required|max:255',
+            'manajemenPtSendiri'  => 'required|max:255',
+            'manajemenPtLain'  => 'required|max:255',
+        ));
+
+        $data = AktivitasDosen::find($id);
+        $data->dosen_id = $request->nama;
+        $data->sks_ps_sendiri = $request->pengajaranPsSendiri;
+        $data->sks_ps_lain = $request->pengajaranPsLain;
+        $data->sks_ps_ptLain = $request->pengajaranPtLain;
+        $data->sks_penelitian = $request->sksPenelitian;
+        $data->sks_pengabdian_masyarakat = $request->sksPengabdian;
+        $data->sks_manajemen_ptSendiri = $request->manajemenPtSendiri;
+        $data->sks_manajemen_ptLain =  $request->manajemenPtLain;
+
+        $data->save();
+        return redirect()->route('admin.dosen.aktivitasView');
+    }
+
+    public function aktivitasDosenDelete($id)
+    {
+        $post = AktivitasDosen::find($id);
+        $post->delete();
+        return redirect()->route('admin.dosen.aktivitasView');
+    }
+
     public function delete($id)
     {
         $post = Dosen::find($id);
@@ -322,6 +411,7 @@ class DosenController extends Controller
         $post->prestasi()->delete();
         $post->pengalaman()->delete();
         $post->seminar()->delete();
+        $post->aktivitas()->delete();
         $post->bimbingan()->delete();
         $post->publikasi()->detach();
         $post->penelitian()->detach();

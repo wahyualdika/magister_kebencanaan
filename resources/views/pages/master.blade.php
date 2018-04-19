@@ -116,6 +116,11 @@
                                         Kegiatan Seminar
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.dosen.aktivitas')}}">
+                                        Aktifitas Dosen
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

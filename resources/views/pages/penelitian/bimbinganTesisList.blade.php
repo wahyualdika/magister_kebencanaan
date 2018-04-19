@@ -56,8 +56,8 @@
                     @endforeach
                     <tr>
                         <td colspan="2" style="text-align: center">Total</td>
-                        <td></td>
-                        <td></td>
+                        <td>Total Dosen S3 : {{$s3}} </td>
+                        <td>Total Guru Besar : {{$guru}} , Total Lektor Kepala : {{$kepala}}</td>
                         <td>{{  $kt }}</td>
                         <td>{{  $ag }}</td>
                     </tr>

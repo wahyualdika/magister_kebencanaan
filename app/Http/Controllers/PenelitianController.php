@@ -217,7 +217,13 @@ class PenelitianController extends Controller
     public function bimbinganList()
     {
         $bimbingans = PembimbingTesis::all();
-        return view('pages.penelitian.bimbinganTesisList')->withBimbingans($bimbingans);
+        $guru = Dosen::where('jabatan_akademik_id',1)->count();
+        $kepala = Dosen::where('jabatan_akademik_id',2)->count();
+        $s3 = Dosen::where('gelar_akademik_s3','!=',null)->count();
+        return view('pages.penelitian.bimbinganTesisList')->withBimbingans($bimbingans)
+                                                                ->withGuru($guru)
+                                                                ->withKepala($kepala)
+                                                                ->withS3($s3);
     }
 
     public function penelitianDgnMhs()

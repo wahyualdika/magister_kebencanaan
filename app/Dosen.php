@@ -42,4 +42,9 @@ class Dosen extends Model
     {
         return $this->belongsTo('App\JabatanAkademik','jabatan_akademik_id');
     }
+
+    public function aktivitas()
+    {
+        return $this->hasMany('App\AktivitasDosen');
+    }
 }

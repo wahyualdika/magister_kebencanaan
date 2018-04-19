@@ -34,10 +34,10 @@
                         @php($tkterlibat += $data->mhs_tdk_terkait)
                     @endforeach
                     <tr>
-                        <td style="text-align: center">Total Mahasiswa Terkait Tesisnya Dengan Penelitian Dosen: {{ $terlibat }}</td>
+                        <td>Total Mahasiswa Terkait Tesisnya Dengan Penelitian Dosen: {{ $terlibat }}</td>
                     </tr>
                     <tr>
-                        <td style="text-align: center">Total Mahasiswa Tidak Terkait Tesisnya Dengan Penelitian Dosen: {{ $tkterlibat }}</td>
+                        <td>Total Mahasiswa Tidak Terkait Tesisnya Dengan Penelitian Dosen: {{ $tkterlibat }}</td>
                     </tr>
                     <tr>
                         <td>#</td>
