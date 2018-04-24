@@ -47,4 +47,9 @@ class Dosen extends Model
     {
         return $this->hasMany('App\AktivitasDosen');
     }
+
+    public function tugasBelajar()
+    {
+        return $this->hasMany('App\TugasBelajar');
+    }
 }

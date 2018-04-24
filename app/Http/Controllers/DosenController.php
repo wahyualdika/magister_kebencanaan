@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AktivitasDosen;
+use App\Country;
 use App\Dosen;
 use App\JabatanAkademik;
 use App\JenisKegiatan;
@@ -11,6 +12,7 @@ use App\Prestasi;
 use App\RoleSeminar;
 use App\Seminar;
 use App\Tingkat;
+use App\TugasBelajar;
 use Illuminate\Http\Request;
 use DateTime;
 
@@ -277,6 +279,38 @@ class DosenController extends Controller
         return redirect()->route('admin.dosenSeminar.view');
     }
 
+    public function seminarUpdateForm($id)
+    {
+        $datas = Seminar::find($id);
+        $dosens      = Dosen::where('status',1)->orderBy('nama','desc')->get();
+        $roles      = RoleSeminar::all();
+        $kegiatans  = JenisKegiatan::all();
+        return view('pages.dosen.seminarUpdateForm')->withDatas($datas)->withDosens($dosens)
+            ->withRoles($roles)
+            ->withKegiatans($kegiatans);
+    }
+
+    public function updateKegiatanSeminar(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'nama' => 'required|max:255',
+            'jenisKegiatan'  => 'required|max:255',
+            'tahun' => 'required|max:255',
+            'tempat' => 'required|max:255',
+            'status' => 'required|max:255',
+        ));
+
+        $data = Seminar::find($id);
+        $data->dosen_id = $request->nama;
+        $data->kegiatan_seminar_id = $request->jenisKegiatan;
+        $data->tempat = $request->tempat;
+        $data->tahun = $request->tahun;
+        $data->seminar_role_id = $request->status;
+        $data->save();
+
+        return redirect()->route('admin.dosenSeminar.view');
+    }
+
     public function deleteKegiatanSeminar($id)
     {
         $data = Seminar::find($id);
@@ -318,15 +352,10 @@ class DosenController extends Controller
     //Aktivitas Dosen
     public function aktivitasDosenView()
     {
-        $jumlah = array();
-        $count = AktivitasDosen::all()->count();
-        /*for($i=0;$i<2;$i++)
-        {
-            for ($k=0;$l<$count;$k++)
-            $jumlah[$i][$k] = AktivitasDosen::where
-        }*/
+
         $datas = AktivitasDosen::all();
-        return view('pages.dosen.aktivitasDosenView')->withDatas($datas);
+        $amount = $datas->count();
+        return view('pages.dosen.aktivitasDosenView')->withDatas($datas)->withAmount($amount);
     }
 
     public function aktivitasDosenForm()
@@ -403,6 +432,43 @@ class DosenController extends Controller
         return redirect()->route('admin.dosen.aktivitasView');
     }
 
+    public function tugasBelajarView()
+    {
+        $datas = TugasBelajar::all();
+        $s3 = TugasBelajar::where('jenjang_pendidikan_lanjut',3)->count();
+        return view('pages.dosen.tugasBelajarView')->withDatas($datas)->withS3($s3);
+    }
+
+    public function tugasBelajarForm()
+    {
+        $negaras = Country::all();
+        $dosens = Dosen::where('status',1)->get();
+        return view('pages.dosen.tugasBelajarForm')->withNegaras($negaras)->withDosens($dosens);
+    }
+
+    public function tugasBelajarStore(Request $request)
+    {
+        $this->validate($request,array(
+            'nama' => 'required|max:255',
+            'jenjangPendidikan'  => 'required|max:255',
+            'bidangStudi'  => 'required|max:255',
+            'perguruanTinggi'  => 'required|max:255',
+            'negara'  => 'required|max:255',
+            'tahun' => 'required|max:255',
+        ));
+
+        $data = new TugasBelajar();
+        $data->dosen_id = $request->nama;
+        $data->jenjang_pendidikan_lanjut = $request->jenjangPendidikan;
+        $data->bidang_studi = $request->bidangStudi;
+        $data->perguruan_tinggi = $request->perguruanTinggi;
+        $data->negara = $request->negara;
+        $data->tahun_mulai_studi = $request->tahun;
+
+        $data->save();
+        return redirect()->route('admin.dosen.tugasBelajarView');
+    }
+
     public function delete($id)
     {
         $post = Dosen::find($id);
@@ -411,6 +477,8 @@ class DosenController extends Controller
         $post->prestasi()->delete();
         $post->pengalaman()->delete();
         $post->seminar()->delete();
+        $post->aktivitas()->delete();
+        $post->tugasBelajar()->delete();
         $post->aktivitas()->delete();
         $post->bimbingan()->delete();
         $post->publikasi()->detach();

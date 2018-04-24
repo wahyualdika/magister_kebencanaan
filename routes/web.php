@@ -23,9 +23,11 @@ Route::prefix('dosen')->group(function(){
     Route::get('/{id}/edit','DosenController@editForm')->name('admin.dosen.editForm');
     Route::post('/update/{id}','DosenController@update')->name('admin.dosen.update');
     Route::post('/delete/{id}','DosenController@delete')->name('admin.dosen.delete');
+
     //view dosen tetap and tidak tetap
     Route::get('/tidakTetap','DosenController@viewDosenTidakTetap')->name('admin.dosen.tidakTetap');
     Route::get('/tetap','DosenController@viewDosenTetap')->name('admin.dosen.tetap');
+
     //prestasi dosen
     Route::get('/prestasi/form','DosenController@prestasiDosen')->name('admin.dosen.prestasi');
     Route::get('/prestasi/view','DosenController@viewPrestasiDosen')->name('admin.dosenPrestasi.view');
@@ -33,6 +35,7 @@ Route::prefix('dosen')->group(function(){
     Route::post('/prestasi/delete/{id}','DosenController@deletePrestasi')->name('admin.prestasi.delete');
     Route::get('/prestasi/{id}/edit','DosenController@editPrestasiForm')->name('admin.dosenPrestasi.editForm');
     Route::post('/prestasi/update/{id}','DosenController@updatePrestasi')->name('admin.prestasi.update');
+
     //pengalaman dosen tetap
     Route::get('/pengalaman/form','DosenController@pengalamanDosen')->name('admin.dosen.pengalaman');
     Route::get('/pengalaman/view','DosenController@viewPengalamanDosen')->name('admin.dosenPengalaman.view');
@@ -40,19 +43,30 @@ Route::prefix('dosen')->group(function(){
     Route::post('/pengalaman/delete/{id}','DosenController@deletePengalaman')->name('admin.pengalaman.delete');
     Route::get('/pengalaman/{id}/edit','DosenController@editPengalamanForm')->name('admin.dosenPengalaman.editForm');
     Route::post('/pengalaman/update/{id}','DosenController@updatePengalaman')->name('admin.pengalaman.update');
+
     //kegiatan seminar dosen
     Route::get('/seminar/form','DosenController@kegiatanSeminarDosen')->name('admin.dosen.seminar');
+    Route::get('/seminar/{id}/edit','DosenController@seminarUpdateForm')->name('admin.dosen.seminarUpdateForm');
     Route::get('/seminar/view','DosenController@viewSeminarDosen')->name('admin.dosenSeminar.view');
     Route::post('/seminar/simpan','DosenController@storeKegiatanSeminar')->name('admin.seminar.store');
+    Route::post('/seminar/update/{id}','DosenController@updateKegiatanSeminar')->name('admin.seminar.update');
     Route::post('/seminar/delete/{id}','DosenController@deleteKegiatanSeminar')->name('admin.seminar.delete');
 
     //Aktivitas Dosen
     Route::get('/aktivitas/form','DosenController@aktivitasDosenForm')->name('admin.dosen.aktivitas');
     Route::get('/aktivitas/view','DosenController@aktivitasDosenView')->name('admin.dosen.aktivitasView');
     Route::post('/aktivitas/store','DosenController@aktivitasDosenStore')->name('admin.dosen.aktivitasStore');
-    Route::get('/aktivitas/{id}/edit','DosenController@aktivitasUpdateForm')->name('admin.dosen.aktivitasUpdate');
+    Route::get('/aktivitas/{id}/edit','DosenController@aktivitasUpdateForm')->name('admin.dosen.aktivitasUpdateForm');
     Route::post('/aktivitas/update/{id}','DosenController@aktivitasDosenUpdate')->name('admin.dosen.aktivitasUpdate');
     Route::post('/aktivitas/delete/{id}','DosenController@aktivitasDosenDelete')->name('admin.dosen.aktivitasDelete');
+
+    //Tugas Belajar Dosen
+    Route::get('/tugas-belajar/form','DosenController@tugasBelajarForm')->name('admin.dosen.tugasBelajar');
+    Route::get('/tugas-belajar/view','DosenController@tugasBelajarView')->name('admin.dosen.tugasBelajarView');
+    Route::post('/tugas-belajar/store','DosenController@tugasBelajarStore')->name('admin.dosen.tugasBelajarStore');
+    Route::get('/tugas-belajar/{id}/edit','DosenController@tugasBelajarUpdateForm')->name('admin.dosen.tugasBelajarUpdateForm');
+    Route::post('/tugas-belajar/update/{id}','DosenController@tugasBelajarUpdate')->name('admin.dosen.tugasBelajarUpdate');
+    Route::post('/tugas-belajar/delete/{id}','DosenController@tugasBelajarDelete')->name('admin.dosen.tugasBelajarDelete');
 });
 
 Route::prefix('publikasi')->group(function(){

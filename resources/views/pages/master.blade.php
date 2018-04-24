@@ -121,6 +121,11 @@
                                         Aktifitas Dosen
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.dosen.tugasBelajar')}}">
+                                        Tugas Belajar Dosen
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
