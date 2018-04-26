@@ -21,11 +21,11 @@
                         @foreach($datas as $data)
 
                             <tr>
-                                <form class="forms-sample" action="#"  method="post">
+                                <form class="forms-sample" action="{{route('admin.dosen.tugasBelajarDelete',['id'=>$data->id])}}"  method="post">
                                     {{ csrf_field() }}
                                     <td style="text-align: center">
                                         <div class="btn-group">
-                                            <a href="#" class="btn btn-default" ><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
+                                            <a href="{{route('admin.dosen.tugasBelajarUpdateForm',['id'=>$data->id])}}" class="btn btn-default" ><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
                                             <a href="#" class="btn btn-default" ><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
                                             <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
                                         </div>

@@ -142,8 +142,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.mahasiswa.form')}}">
                                         Masukkan Data
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mahasiswa.penelitian.form')}}">
+                                        Masukkan Penelitian
                                     </a>
                                 </li>
                             </ul>

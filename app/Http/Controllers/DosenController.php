@@ -469,6 +469,43 @@ class DosenController extends Controller
         return redirect()->route('admin.dosen.tugasBelajarView');
     }
 
+    public function tugasBelajarUpdateForm($id)
+    {
+        $negaras = Country::all();
+        $data = TugasBelajar::find($id);
+        return view('pages.dosen.tugasBelajarUpdateForm')->withNegaras($negaras)->withData($data);
+    }
+
+    public function tugasBelajarUpdate(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'nama' => 'required|max:255',
+            'jenjangPendidikan'  => 'required|max:255',
+            'bidangStudi'  => 'required|max:255',
+            'perguruanTinggi'  => 'required|max:255',
+            'negara'  => 'required|max:255',
+            'tahun' => 'required|max:255',
+        ));
+
+        $data = TugasBelajar::find($id);
+        $data->dosen_id = $request->nama;
+        $data->jenjang_pendidikan_lanjut = $request->jenjangPendidikan;
+        $data->bidang_studi = $request->bidangStudi;
+        $data->perguruan_tinggi = $request->perguruanTinggi;
+        $data->negara = $request->negara;
+        $data->tahun_mulai_studi = $request->tahun;
+
+        $data->save();
+        return redirect()->route('admin.dosen.tugasBelajarView');
+    }
+
+    public function tugasBelajarDelete($id)
+    {
+        $data = TugasBelajar::find($id);
+        $data->delete();
+        return redirect()->route('admin.dosen.tugasBelajarView');
+    }
+
     public function delete($id)
     {
         $post = Dosen::find($id);

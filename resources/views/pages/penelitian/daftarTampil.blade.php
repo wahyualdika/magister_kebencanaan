@@ -45,13 +45,13 @@
                 <div class="card card-statistics">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="{{route('penelitian.tampil.bimbinganTesis')}}">
+                            <a style="text-decoration:none" href="{{route('penelitian.tampil.bimbinganTesis')}}">
                                 <div class="float-left">
                                     <h4 class="text-danger">
                                         <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
                                     </h4>
                                 </div>
-                                <div style="text-align: center">
+                                <div  style="text-align: center">
                                     <p class="card-text text-dark">Penelitian Tesis</p>
                                 </div>
                             </a>
@@ -63,7 +63,7 @@
                 <div class="card card-statistics">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="{{route('penelitian.tampil.penelitianDgnMhs')}}">
+                            <a style="text-decoration:none" href="{{route('penelitian.tampil.penelitianDgnMhs')}}">
                                 <div class="float-left">
                                     <h4 class="text-danger">
                                         <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>

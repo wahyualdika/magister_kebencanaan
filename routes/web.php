@@ -100,8 +100,25 @@ Route::prefix('penelitian')->group(function(){
     Route::post('/bimbingan/delete/{id}','PenelitianController@deleteBimbingan')->name('admin.penelitian.bimbinganDelete');
 
     //bagian butir penelitian
-    Route::get('/daftarTampil/dosenTetap','PenelitianController@penenlitianDosenTetap')->name('penelitian.tampil.dosenTetap');
+    Route::get('/daftarTampil/dosenTetap','PenelitianController@penelitianDosenTetap')->name('penelitian.tampil.dosenTetap');
     Route::get('/daftarTampil/jumlahDanaPenelitian','PenelitianController@jumlahDanaPenelitian')->name('penelitian.tampil.jumlahDanaPenelitian');
     Route::get('/daftarTampil/penelitianTesis','PenelitianController@bimbinganList')->name('penelitian.tampil.bimbinganTesis');
     Route::get('/daftarTampil/penelitianDgnMhs','PenelitianController@penelitianDgnMhs')->name('penelitian.tampil.penelitianDgnMhs');
+});
+
+Route::prefix('mahasiswa')->group(function(){
+    Route::get('/form','MahasiswaController@mahasiswaForm')->name('admin.mahasiswa.form');
+    Route::post('/store','MahasiswaController@mahasiswaStore')->name('admin.mahasiswa.store');
+    Route::get('/view','MahasiswaController@mahasiswaView')->name('admin.mahasiswa.view');
+    Route::get('/update/{id}/edit','MahasiswaController@mahasiswaFormUpdate')->name('admin.mahasiswa.formUpdate');
+    Route::post('/update/{id}','MahasiswaController@mahasiswaUpdate')->name('admin.mahasiswa.update');
+    Route::post('/delete/{id}','MahasiswaController@mahasiswaDelete')->name('admin.mahasiswa.delete');
+
+    //Penelitian Mahasiswa
+    Route::get('/penelitian/view','MahasiswaController@mahasiswaPenelitianView')->name('mahasiswa.penelitian.view');
+    Route::get('/penelitian/form','MahasiswaController@mahasiswaPenelitianForm')->name('mahasiswa.penelitian.form');
+    Route::post('/penelitian/store','MahasiswaController@mahasiswaPenelitianStore')->name('mahasiswa.penelitian.store');
+    Route::get('/penelitian/update/{id}/edit','MahasiswaController@mahasiswaPenelitianFormUpdate')->name('mahasiswa.penelitian.formUpdate');
+    Route::post('/penelitian/update/{id}','MahasiswaController@mahasiswaPenelitianUpdate')->name('mahasiswa.penelitian.update');
+    Route::post('/penelitian/delete/{id}','MahasiswaController@mahasiswaPenelitianDelete')->name('mahasiswa.penelitian.delete');
 });

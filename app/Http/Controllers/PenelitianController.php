@@ -6,6 +6,7 @@ use App\Dosen;
 use App\JabatanAkademik;
 use App\PembimbingTesis;
 use App\Penelitian;
+use App\PenelitianMahasiswa;
 use App\SumberDana;
 use Illuminate\Http\Request;
 
@@ -183,7 +184,7 @@ class PenelitianController extends Controller
         return redirect()->route('admin.penelitian.viewBimbingan');
     }
 
-    public function penenlitianDosenTetap()
+    public function penelitianDosenTetap()
     {
         $danas = SumberDana::all();
         $time = new \DateTime('now');
@@ -228,7 +229,10 @@ class PenelitianController extends Controller
 
     public function penelitianDgnMhs()
     {
+        $time = new \DateTime('now');
+        $newtime= $time->modify('-0 year' )->format('Y');
+        $mahasiswa = PenelitianMahasiswa::where('tahun_penelitian','=',$newtime)->count();
         $datas = Penelitian::all();
-        return view('pages.penelitian.listPenelitianDgnMhs')->withDatas($datas);
+        return view('pages.penelitian.listPenelitianDgnMhs')->withDatas($datas)->withMahasiswa($mahasiswa);
     }
 }
