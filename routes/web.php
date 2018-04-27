@@ -121,4 +121,8 @@ Route::prefix('mahasiswa')->group(function(){
     Route::get('/penelitian/update/{id}/edit','MahasiswaController@mahasiswaPenelitianFormUpdate')->name('mahasiswa.penelitian.formUpdate');
     Route::post('/penelitian/update/{id}','MahasiswaController@mahasiswaPenelitianUpdate')->name('mahasiswa.penelitian.update');
     Route::post('/penelitian/delete/{id}','MahasiswaController@mahasiswaPenelitianDelete')->name('mahasiswa.penelitian.delete');
+
+    //mahasiswa dan lulusan
+    Route::get('/mhs_dan_lulusan/view','MahasiswaController@viewAllLulusanMhs')->name('mahasiswa.lulusan.view');
+    Route::get('/mhs_dan_lulusan/form','MahasiswaController@formLulusanMhs')->name('mahasiswa.lulusan.form');
 });

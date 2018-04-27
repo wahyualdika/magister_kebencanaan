@@ -130,4 +130,16 @@ class MahasiswaController extends Controller
         $data->delete();
         return redirect()->route('mahasiswa.penelitian.view');
     }
+
+    //mahasiswa dan lulusan section
+
+    public function viewAllLulusanMhs()
+    {
+        return view('pages.mahasiswa.mhsDanLulusanView');
+    }
+
+    public function formLulusanMhs()
+    {
+        return view('pages.mahasiswa.mhsDanLulusanForm');
+    }
 }
