@@ -29,13 +29,13 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-4">Data Dosen</h5>
-                    <form class="forms-sample" action="{{ route('admin.dosen.submit') }}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{ route('mahasiswa.lulusan.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group"><label for="exampleS1">Tahun Akademik</label>
                             <select class="select2-multi form-control" name="tahunAkademik">
-                                {{--@foreach($jabatans as $jabatan)
-                                    <option value="{{$jabatan->id}}">{{$jabatan->nama}}</option>
-                                @endforeach--}}
+                                @foreach($years as $year)
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -47,7 +47,7 @@
                                 <label for="exampleNIP">Ikut Seleksi</label>
                                 <input type="number" class="form-control p-input" name="ikutSeleksi" id="IkutSeleksi" placeholder="Ikut Seleksi">
                                 <label for="exampleNIP">Lulus Seleksi</label>
-                                <input type="number" class="form-control p-input" name="luluSeleksi" id="LulusSeleksi" placeholder="Lulus Seleksi">
+                                <input type="number" class="form-control p-input" name="lulusSeleksi" id="LulusSeleksi" placeholder="Lulus Seleksi">
                             </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">Jumlah Mahasiswa Baru</label>
@@ -60,28 +60,28 @@
                         </div>
                         <div class="form-group"><label for="exampleS1">Jumlah Total Mahasiswa</label>
                             <div class="form-group">
-                                <label for="exampleNIP">Gelar Akedemik S3</label>
+                                <label for="exampleNIP">Total Mahasiswa Bukan Transfer</label>
                                 <input type="number" class="form-control p-input" name="totalBknTransfer" placeholder="Bukan Transfer">
-                                <label for="exampleNIP">Asal Perguruan Tinggi S3</label>
+                                <label for="exampleNIP">Total Mahasiswa Transfer</label>
                                 <input type="number" class="form-control p-input" name="totalTransfer" placeholder="Transfer">
                             </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">Jumlah Lulusan</label>
                             <div class="form-group">
-                                <label for="exampleNIP">Gelar Akedemik S3</label>
+                                <label for="exampleNIP">Lulusan Bukan Transfer</label>
                                 <input type="number" class="form-control p-input" name="lulusBknTransfer" placeholder="Bukan Transfer">
-                                <label for="exampleNIP">Asal Perguruan Tinggi S3</label>
+                                <label for="exampleNIP">Lulusan Transfer</label>
                                 <input type="number" class="form-control p-input" name="lulusTransfer" placeholder="Transfer">
                             </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">IPK Lulusan Reguler</label>
                             <div class="form-group">
                                 <label for="exampleNIP">Minimum</label>
-                                <input type="number" class="form-control p-input" name="ipkmin" placeholder="Minimum">
+                                <input type="number" step="any" class="form-control p-input" name="ipkmin" placeholder="Minimum">
                                 <label for="exampleNIP">Rata-Rata</label>
-                                <input type="number" class="form-control p-input" name="ipkRat" placeholder="Rata-Rata">
+                                <input type="number" step="any" class="form-control p-input" name="ipkrat" placeholder="Rata-Rata">
                                 <label for="exampleNIP">Maksimum</label>
-                                <input type="number" class="form-control p-input" name="ipkMak" placeholder="Maksimum">
+                                <input type="number" step="any" class="form-control p-input" name="ipkmak" placeholder="Maksimum">
                             </div>
                         </div>
                         <div class="form-group">

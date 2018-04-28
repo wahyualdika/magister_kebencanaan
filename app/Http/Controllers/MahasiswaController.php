@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mahasiswa;
+use App\MahasiswaDanLulusan;
 use App\Penelitian;
 use App\PenelitianMahasiswa;
 use Illuminate\Http\Request;
@@ -135,11 +136,65 @@ class MahasiswaController extends Controller
 
     public function viewAllLulusanMhs()
     {
-        return view('pages.mahasiswa.mhsDanLulusanView');
+        $datas = MahasiswaDanLulusan::all();
+        return view('pages.mahasiswa.mhsDanLulusanView')->withDatas($datas);
     }
 
     public function formLulusanMhs()
     {
-        return view('pages.mahasiswa.mhsDanLulusanForm');
+        $years = array();
+        $time = new \DateTime('now');
+        $newtime = $time->modify('-0 year' )->format('Y');
+        $newtime1= $time->modify('-1 year' )->format('Y');
+        $newtime2= $time->modify('-1 year' )->format('Y');
+        $newtime3= $time->modify('-1 year' )->format('Y');
+        $newtime4= $time->modify('-1 year' )->format('Y');
+        $years[0] = $newtime;
+        $years[1] = $newtime1;
+        $years[2] = $newtime2;
+        $years[3] = $newtime3;
+        $years[4] = $newtime4;
+        return view('pages.mahasiswa.mhsDanLulusanForm')->withYears($years);
+    }
+
+    public function storeLulusanMhs(Request $request)
+    {
+        $this->validate($request,array(
+            'tahunAkademik' => 'required|numeric',
+            'dayaTampung' => 'required|numeric',
+            'ikutSeleksi' => 'required|numeric',
+            'lulusSeleksi' => 'required|numeric',
+            'bukanTransfer'=>'required|numeric',
+            'transfer'=>'required|numeric',
+            'totalBknTransfer' => 'required|numeric',
+            'totalTransfer' => 'required|numeric',
+            'lulusBknTransfer' => 'required|numeric',
+            'lulusTransfer' => 'required|numeric',
+            'ipkmin' => 'required|numeric',
+            'ipkmak' => 'required|numeric',
+            'ipkrat' => 'required|numeric',
+            'jumlahWNA' => 'required|numeric',
+        ));
+
+
+        $data = new MahasiswaDanLulusan();
+        $data->tahun_akademik = $request->tahunAkademik;
+        $data->daya_tampung = $request->dayaTampung;
+        $data->ikut_seleksi = $request->ikutSeleksi;
+        $data->lulus_seleksi = $request->lulusSeleksi;
+        $data->mhsbr_bukan_transfer = $request->bukanTransfer;
+        $data->mhsbr_transfer = $request->transfer;
+        $data->total_mhs_bknTransfer = $request->totalBknTransfer;
+        $data->total_mhs_transfer = $request->totalTransfer;
+        $data->lulusan_bkn_transfer = $request->lulusBknTransfer;
+        $data->lulusan_transfer = $request->lulusTransfer;
+        $data->ipk_reg_min = $request->ipkmin;
+        $data->ipk_reg_rat = $request->ipkrat;
+        $data->ipk_reg_mak = $request->ipkmak;
+        $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
+
+        $data->save();
+       // return 'berhasil';
+        return redirect()->route('mahasiswa.lulusan.view');
     }
 }

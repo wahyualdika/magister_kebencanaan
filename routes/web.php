@@ -125,4 +125,5 @@ Route::prefix('mahasiswa')->group(function(){
     //mahasiswa dan lulusan
     Route::get('/mhs_dan_lulusan/view','MahasiswaController@viewAllLulusanMhs')->name('mahasiswa.lulusan.view');
     Route::get('/mhs_dan_lulusan/form','MahasiswaController@formLulusanMhs')->name('mahasiswa.lulusan.form');
+    Route::post('/mhs_dan_lulusan/store','MahasiswaController@storeLulusanMhs')->name('mahasiswa.lulusan.store');
 });
