@@ -107,6 +107,10 @@ Route::prefix('penelitian')->group(function(){
 });
 
 Route::prefix('mahasiswa')->group(function(){
+    //Daftar Tampil
+    Route::get('/daftarTampil','MahasiswaController@daftarView')->name('admin.mahasiswa.daftar');
+
+    //Data Mahasiswa
     Route::get('/form','MahasiswaController@mahasiswaForm')->name('admin.mahasiswa.form');
     Route::post('/store','MahasiswaController@mahasiswaStore')->name('admin.mahasiswa.store');
     Route::get('/view','MahasiswaController@mahasiswaView')->name('admin.mahasiswa.view');
@@ -126,4 +130,22 @@ Route::prefix('mahasiswa')->group(function(){
     Route::get('/mhs_dan_lulusan/view','MahasiswaController@viewAllLulusanMhs')->name('mahasiswa.lulusan.view');
     Route::get('/mhs_dan_lulusan/form','MahasiswaController@formLulusanMhs')->name('mahasiswa.lulusan.form');
     Route::post('/mhs_dan_lulusan/store','MahasiswaController@storeLulusanMhs')->name('mahasiswa.lulusan.store');
+    Route::post('/mhs_dan_lulusan/delete/{id}','MahasiswaController@deleteLulusanMhs')->name('mahasiswa.lulusan.delete');
+    Route::get('/mhs_dan_lulusan/update/{id}/edit','MahasiswaController@formUpdateLulusanMhs')->name('mahasiswa.lulusan.formUpdate');
+    Route::post('/mhs_dan_lulusan/update/{id}','MahasiswaController@updateLulusanMhs')->name('mahasiswa.lulusan.update');
+
+    //Mahasiswa dan dana
+    Route::get('/mhs_dan_dana/view','MahasiswaController@viewAllDanaMhs')->name('mahasiswa.dana.view');
+    Route::get('/mhs_dan_dana/form','MahasiswaController@formDanaMhs')->name('mahasiswa.dana.form');
+    Route::post('/mhs_dan_dana/store','MahasiswaController@storeDanaMhs')->name('mahasiswa.dana.store');
+    Route::get('/mhs_dan_dana/update/{id}/edit','MahasiswaController@formUpdateDanaMhs')->name('mahasiswa.dana.formUpdate');
+    Route::post('/mhs_dan_dana/update/{id}','MahasiswaController@updateDanaMhs')->name('mahasiswa.dana.update');
+    Route::post('/mhs_dan_dana/delete/{id}','MahasiswaController@deleteDanaMhs')->name('mahasiswa.dana.delete');
+
+    //Evaluasi Lulusan
+    Route::get('/evaluasi_lulusan/form','MahasiswaController@formEvaLulusan')->name('evaluasi.lulusan.form');
+    Route::get('/evaluasi_lulusan/view','MahasiswaController@viewEvaLulusan')->name('evaluasi.lulusan.view');
+    Route::post('/evaluasi_lulusan/store','MahasiswaController@storeEvaLulusan')->name('evaluasi.lulusan.store');
+    Route::get('/evaluasi_lulusan/update/{id}/edit','MahasiswaController@formUpdateEvaLulusan')->name('evaluasi.lulusan.formUpdate');
+    Route::post('/evaluasi_lulusan/update/{id}','MahasiswaController@updateEvaLulusan')->name('evaluasi.lulusan.update');
 });

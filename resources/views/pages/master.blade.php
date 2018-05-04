@@ -137,7 +137,7 @@
                         <div class="collapse" id="drop-mahasiswa">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.mahasiswa.daftar')}}">
                                         Lihat Daftar
                                     </a>
                                 </li>
@@ -149,6 +149,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('mahasiswa.penelitian.form')}}">
                                         Masukkan Penelitian
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mahasiswa.lulusan.form')}}">
+                                        Masukkan Mahasiswa dan Lulusan
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mahasiswa.dana.form')}}">
+                                        Masukkan Mahasiswa dan Dana Operasional
                                     </a>
                                 </li>
                             </ul>

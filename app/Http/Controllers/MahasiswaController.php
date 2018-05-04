@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\EvaluasiLanjutan;
+use App\EvaluasiLulusan;
+use App\JenisKemampuan;
 use App\Mahasiswa;
+use App\MahasiswaDanDana;
 use App\MahasiswaDanLulusan;
 use App\Penelitian;
 use App\PenelitianMahasiswa;
 use Illuminate\Http\Request;
 use Symfony\Component\Translation\MetadataAwareInterface;
+use function Symfony\Component\VarDumper\Tests\Caster\reflectionParameterFixture;
 
 class MahasiswaController extends Controller
 {
+    public function daftarView()
+    {
+        return view('pages.mahasiswa.daftarTampil');
+    }
+
     public function mahasiswaView()
     {
         $datas = Mahasiswa::all();
@@ -136,8 +146,22 @@ class MahasiswaController extends Controller
 
     public function viewAllLulusanMhs()
     {
+        $jumlahs = array();
+        $jumlahs[0] = MahasiswaDanLulusan::sum('daya_tampung');
+        $jumlahs[1] = MahasiswaDanLulusan::sum('ikut_seleksi');
+        $jumlahs[2] = MahasiswaDanLulusan::sum('lulus_seleksi');
+        $jumlahs[3] = MahasiswaDanLulusan::sum('mhsbr_bukan_transfer');
+        $jumlahs[4] = MahasiswaDanLulusan::sum('mhsbr_transfer');
+        $jumlahs[5] = MahasiswaDanLulusan::sum('total_mhs_bknTransfer');
+        $jumlahs[6] = MahasiswaDanLulusan::sum('total_mhs_transfer');
+        $jumlahs[7] = MahasiswaDanLulusan::sum('lulusan_bkn_transfer');
+        $jumlahs[8] = MahasiswaDanLulusan::sum('lulusan_transfer');
+        $jumlahs[9] = MahasiswaDanLulusan::sum('ipk_reg_min');
+        $jumlahs[10] = MahasiswaDanLulusan::sum('ipk_reg_rat');
+        $jumlahs[11] = MahasiswaDanLulusan::sum('ipk_reg_mak');
+        $jumlahs[12] = MahasiswaDanLulusan::sum('jumlah_mahasiswa_wna');
         $datas = MahasiswaDanLulusan::all();
-        return view('pages.mahasiswa.mhsDanLulusanView')->withDatas($datas);
+        return view('pages.mahasiswa.mhsDanLulusanView')->withDatas($datas)->withJumlahs($jumlahs);
     }
 
     public function formLulusanMhs()
@@ -194,7 +218,223 @@ class MahasiswaController extends Controller
         $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
 
         $data->save();
-       // return 'berhasil';
         return redirect()->route('mahasiswa.lulusan.view');
+    }
+
+    public function formUpdateLulusanMhs($id)
+    {
+        $years = array();
+        $time = new \DateTime('now');
+        $newtime = $time->modify('-0 year' )->format('Y');
+        $newtime1= $time->modify('-1 year' )->format('Y');
+        $newtime2= $time->modify('-1 year' )->format('Y');
+        $newtime3= $time->modify('-1 year' )->format('Y');
+        $newtime4= $time->modify('-1 year' )->format('Y');
+        $years[0] = $newtime;
+        $years[1] = $newtime1;
+        $years[2] = $newtime2;
+        $years[3] = $newtime3;
+        $years[4] = $newtime4;
+        $data = MahasiswaDanLulusan::find($id);
+        return view('pages.mahasiswa.mhsDanLulusanFormUpdate')->withYears($years)->withData($data);
+    }
+
+    public function updateLulusanMhs(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'tahunAkademik' => 'required|numeric',
+            'dayaTampung' => 'required|numeric',
+            'ikutSeleksi' => 'required|numeric',
+            'lulusSeleksi' => 'required|numeric',
+            'bukanTransfer'=>'required|numeric',
+            'transfer'=>'required|numeric',
+            'totalBknTransfer' => 'required|numeric',
+            'totalTransfer' => 'required|numeric',
+            'lulusBknTransfer' => 'required|numeric',
+            'lulusTransfer' => 'required|numeric',
+            'ipkmin' => 'required|numeric',
+            'ipkmak' => 'required|numeric',
+            'ipkrat' => 'required|numeric',
+            'jumlahWNA' => 'required|numeric',
+        ));
+
+
+        $data = MahasiswaDanLulusan::find($id);
+        $data->tahun_akademik = $request->tahunAkademik;
+        $data->daya_tampung = $request->dayaTampung;
+        $data->ikut_seleksi = $request->ikutSeleksi;
+        $data->lulus_seleksi = $request->lulusSeleksi;
+        $data->mhsbr_bukan_transfer = $request->bukanTransfer;
+        $data->mhsbr_transfer = $request->transfer;
+        $data->total_mhs_bknTransfer = $request->totalBknTransfer;
+        $data->total_mhs_transfer = $request->totalTransfer;
+        $data->lulusan_bkn_transfer = $request->lulusBknTransfer;
+        $data->lulusan_transfer = $request->lulusTransfer;
+        $data->ipk_reg_min = $request->ipkmin;
+        $data->ipk_reg_rat = $request->ipkrat;
+        $data->ipk_reg_mak = $request->ipkmak;
+        $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
+
+        $data->save();
+        // return 'berhasil';
+        return redirect()->route('mahasiswa.lulusan.view');
+    }
+
+    public function deleteLulusanMhs($id)
+    {
+        $data = MahasiswaDanLulusan::find($id);
+        $data->delete();
+        return redirect()->route('mahasiswa.lulusan.view');
+    }
+
+    //mahasiswa dan dana section
+
+    public function viewAllDanaMhs()
+    {
+        $datas = MahasiswaDanDana::all();
+        return view('pages.mahasiswa.mhsDanDanaView')->withDatas($datas);
+    }
+
+    public function formDanaMhs()
+    {
+        $years = array();
+        $time = new \DateTime('now');
+        $newtime = $time->modify('-0 year' )->format('Y');
+        $newtime1= $time->modify('-1 year' )->format('Y');
+        $newtime2= $time->modify('-1 year' )->format('Y');
+        $years[0] = $newtime;
+        $years[1] = $newtime1;
+        $years[2] = $newtime2;
+
+        return view('pages.mahasiswa.mhsDanDanaForm')->withYears($years);
+    }
+
+    public function storeDanaMhs(Request $request)
+    {
+        $this->validate($request,array(
+            'tahunAkademik' => 'required|numeric',
+            'jumlahMahasiswa' => 'required|numeric',
+            'jumlahDana' => 'required|numeric',
+        ));
+
+        $data = new MahasiswaDanDana();
+        $data->tahun_akademik = $request->tahunAkademik;
+        $data->jumlah_mahasiswa = $request->jumlahMahasiswa;
+        $data->jumlah_dana = $request->jumlahDana;
+        $data->save();
+
+        return redirect()->route('mahasiswa.dana.view');
+    }
+
+    public function formUpdateDanaMhs($id)
+    {
+        $data = MahasiswaDanDana::find($id);
+        return view('pages.mahasiswa.mhsDanDanaFormUpdate')->withData($data);
+    }
+
+    public function updateDanaMhs(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'tahunAkademik' => 'required|numeric',
+            'jumlahMahasiswa' => 'required|numeric',
+            'jumlahDana' => 'required|numeric',
+        ));
+
+        $data = MahasiswaDanDana::find($id);
+        $data->tahun_akademik = $request->tahunAkademik;
+        $data->jumlah_mahasiswa = $request->jumlahMahasiswa;
+        $data->jumlah_dana = $request->jumlahDana;
+        $data->save();
+
+        return redirect()->route('mahasiswa.dana.view');
+    }
+
+    public function deleteDanaMhs($id)
+    {
+        $data = MahasiswaDanDana::find($id);
+        $data->delete();
+        return redirect()->route('mahasiswa.dana.view');
+    }
+
+    //Evaluasi Lulusan Section
+
+    public function formEvaLulusan()
+    {
+        $kemampuans = JenisKemampuan::all();
+        return view('pages.mahasiswa.evaluasiLulusanForm')->withKemampuans($kemampuans);
+    }
+
+    public function viewEvaLulusan()
+    {
+        $datas = EvaluasiLulusan::all();
+        $datalanjutans = EvaluasiLanjutan::find(1);
+        return view('pages.mahasiswa.evaluasiLulusanView')->withDatas($datas)->withDatalanjutans($datalanjutans);
+    }
+
+    public function storeEvaLulusan(Request $request)
+    {
+        $this->validate($request,array(
+            'jenisKemampuan' => 'required|max:255',
+            'sgtBaik' => 'required|numeric',
+            'baik' => 'required|numeric',
+            'cukup' => 'required|numeric',
+            'kurang' => 'required|numeric',
+        ));
+
+        $data = new EvaluasiLulusan();
+        $data->jenis_kemampuan_id = $request->jenisKemampuan;
+        $data->sangat_baik = $request->sgtBaik;
+        $data->baik = $request->baik;
+        $data->cukup = $request->cukup;
+        $data->kurang = $request->kurang;
+        $data->pelacakan = $request->pelacakan;
+        $data->save();
+
+        if(isset($request->persentase)||isset($request->waktuTgu))
+        {
+            $dataLanjutan = EvaluasiLanjutan::find(1);
+            $dataLanjutan->persentase = $request->persentase;
+            $dataLanjutan->waktu_tunggu = $request->waktuTgu;
+            $dataLanjutan->save();
+        }
+
+        return redirect()->route('evaluasi.lulusan.view');
+    }
+
+    public function formUpdateEvaLulusan($id)
+    {
+        $data = EvaluasiLulusan::find($id);
+        $lanjutans = EvaluasiLanjutan::find(1);
+        return view('pages.mahasiswa.evaluasiLulusanFormUpdate')->withData($data)->withLanjutans($lanjutans);
+    }
+
+    public function updateEvaLulusan(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'jenisKemampuan' => 'required|max:255',
+            'sgtBaik' => 'required|numeric',
+            'baik' => 'required|numeric',
+            'cukup' => 'required|numeric',
+            'kurang' => 'required|numeric',
+        ));
+
+        $data = EvaluasiLulusan::find($id);
+        $data->jenis_kemampuan_id = $request->jenisKemampuan;
+        $data->sangat_baik = $request->sgtBaik;
+        $data->baik = $request->baik;
+        $data->cukup = $request->cukup;
+        $data->kurang = $request->kurang;
+        $data->pelacakan = $request->pelacakan;
+        $data->save();
+
+        if(isset($request->persentase)||isset($request->waktuTgu))
+        {
+            $dataLanjutan = EvaluasiLanjutan::find(1);
+            $dataLanjutan->persentase = $request->persentase;
+            $dataLanjutan->waktu_tunggu = $request->waktuTgu;
+            $dataLanjutan->save();
+        }
+
+        return redirect()->route('evaluasi.lulusan.view');
     }
 }

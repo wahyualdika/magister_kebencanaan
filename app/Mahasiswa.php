@@ -10,6 +10,6 @@ class Mahasiswa extends Model
 
     public function penelitian()
     {
-        return $this->hasOne('App\PenelitianMahasiswa','penelitian_mahasiswa_id');
+        return $this->hasOne('App\PenelitianMahasiswa');
     }
 }

@@ -36,10 +36,10 @@
                     @foreach($datas as $data)
                         <tr>
                             <td>
-                                <form class="forms-sample" action="#"  method="post">
+                                <form class="forms-sample" action="{{route('mahasiswa.lulusan.delete',['id'=>$data->id])}}"  method="post">
                                     {{ csrf_field() }}
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
+                                        <a href="{{route('mahasiswa.lulusan.formUpdate',['id'=>$data->id])}}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
                                         <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
                                         <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
                                     </div>
@@ -68,126 +68,13 @@
                         </tr>
                     @endforeach
                 </table>
-                {{--<table class="table table-hover">
-                    <tbody>
-                    <th style="text-align: center">Aksi</th>
-                    <th>Tahun Akademik</th>
-                    <th>Daya Tampung</th>
-                    <th style="text-align: center"> Jumlah Calon Mahasiswa
-                        <table class="milestone-table">
-                            <tr>
-                                <td>Ikut Seleksi</td>
-                                <td>Lulus Seleksi</td>
-                            </tr>
-                        </table>
-                    </th>
-                    <th style="text-align: center"> Jumlah Mahasiswa Baru
-                        <table class="milestone-table">
-                            <tr>
-                                <td>Bukan Transfer</td>
-                                <td>Transfer</td>
-                            </tr>
-                        </table>
-                    </th>
-                    <th style="text-align: center"> Jumlah Total Mahasiswa
-                        <table class="milestone-table">
-                            <tr>
-                                <td>Bukan Transfer</td>
-                                <td>Transfer</td>
-                            </tr>
-                        </table>
-                    </th>
-                    <th style="text-align: center"> Jumlah Lulusan
-                        <table class="milestone-table">
-                            <tr>
-                                <td>Bukan Transfer</td>
-                                <td>Transfer</td>
-                            </tr>
-                        </table>
-                    </th>
-                    <th style="text-align: center"> IPK Lulusan Reguler
-                        <table class="milestone-table">
-                            <tr>
-                                <td>Min</td>
-                                <td>Rat</td>
-                                <td>Mak</td>
-                            </tr>
-                        </table>
-                    </th>
-
-                    <!-- Data -->
-                    @foreach($datas as $data)
-
-                        <tr>
-                            <form class="forms-sample" action="#"  method="post">
-                                {{ csrf_field() }}
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
-                                        <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
-                                        <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
-                                    </div>
-                                </td>
-                            </form>
-
-                            <td>{{ $data->tahun_akademik }}</td>
-                            <td>{{ $data->daya_tampung}}</td>
-                            <td>
-                                --}}{{--<table class="milestone-table">--}}{{--
-                                    <tr>
-                                        <td>{{ $data->ikut_seleksi }}</td>
-                                        <td>{{ $data->lulus_seleksi}}</td>
-                                    </tr>
-                                --}}{{--</table>--}}{{--
-                            </td>
-
-                            <td>
-                                --}}{{--<table class="milestone-table">--}}{{--
-                                    <tr>
-                                        <td>{{ $data->gelar_akademik_s1 }}</td>
-                                        <td>{{ $data->asal_pt_s1 }}</td>
-                                    </tr>
-                                --}}{{--</table>--}}{{--
-                            </td>
-                            <td>
-                                --}}{{--<table class="milestone-table">--}}{{--
-                                    <tr>
-                                        <td>{{ $data->mhsbr_bukan_transfer }}</td>
-                                        <td>{{ $data->mhsbr_transfer }}</td>
-                                    </tr>
-                                --}}{{--</table>--}}{{--
-                            </td>
-                            <td>
-                                --}}{{--<table class="milestone-table">--}}{{--
-                                    <tr>
-                                        <td>{{ $data->total_mhs_bknTransfer }}</td>
-                                        <td>{{ $data->total_mhs_transfer }}</td>
-                                    </tr>
-                                --}}{{--</table>--}}{{--
-                            </td>
-                            <td>
-                                <table class="milestone-table">
-                                    <tr>
-                                        <td>{{ $data->lulusan_bkn_transfer }}</td>
-                                        <td>{{ $data->lulusan_transfer }}</td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table class="milestone-table">
-                                    <tr>
-                                        <td>{{ $data->ipk_reg_min }}</td>
-                                        <td>{{ $data->ipk_reg_rat }}</td>
-                                        <td>{{ $data->ipk_reg_mak }}</td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>{{ $data->jumlah_mahasiswa_wna}}</td>
-                        </tr>
-
+                <table>
+                    <tr>
+                        @foreach($jumlahs as $jumlah)
+                            <th style="text-align: center">{!! $jumlah !!}</th>
                         @endforeach
-                        </tbody>
-                </table>--}}
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
