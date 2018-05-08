@@ -25,7 +25,7 @@
                     @foreach($datas as $data)
                         <tr>
                             <td>
-                                <form class="forms-sample" action="{{--{{route('mahasiswa.lulusan.delete',['id'=>$data->id])}}--}}"  method="post">
+                                <form class="forms-sample" action="{{route('evaluasi.lulusan.delete',['id'=>$data->id])}}"  method="post">
                                     {{ csrf_field() }}
                                     <div class="btn-group">
                                         <a href="{{route('evaluasi.lulusan.formUpdate',['id'=>$data->id])}}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>

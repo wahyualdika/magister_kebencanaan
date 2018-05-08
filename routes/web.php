@@ -128,6 +128,7 @@ Route::prefix('mahasiswa')->group(function(){
 
     //mahasiswa dan lulusan
     Route::get('/mhs_dan_lulusan/view','MahasiswaController@viewAllLulusanMhs')->name('mahasiswa.lulusan.view');
+    Route::get('/mhs_dan_lulusan/viewOnly','MahasiswaController@viewOnlyMhs')->name('mahasiswa.lulusan.viewOnly');
     Route::get('/mhs_dan_lulusan/form','MahasiswaController@formLulusanMhs')->name('mahasiswa.lulusan.form');
     Route::post('/mhs_dan_lulusan/store','MahasiswaController@storeLulusanMhs')->name('mahasiswa.lulusan.store');
     Route::post('/mhs_dan_lulusan/delete/{id}','MahasiswaController@deleteLulusanMhs')->name('mahasiswa.lulusan.delete');
@@ -148,4 +149,5 @@ Route::prefix('mahasiswa')->group(function(){
     Route::post('/evaluasi_lulusan/store','MahasiswaController@storeEvaLulusan')->name('evaluasi.lulusan.store');
     Route::get('/evaluasi_lulusan/update/{id}/edit','MahasiswaController@formUpdateEvaLulusan')->name('evaluasi.lulusan.formUpdate');
     Route::post('/evaluasi_lulusan/update/{id}','MahasiswaController@updateEvaLulusan')->name('evaluasi.lulusan.update');
+    Route::post('/evaluasi_lulusan/delete/{id}','MahasiswaController@deleteEvaLulusan')->name('evaluasi.lulusan.delete');
 });

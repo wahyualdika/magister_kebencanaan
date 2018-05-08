@@ -282,7 +282,7 @@ class DosenController extends Controller
     public function seminarUpdateForm($id)
     {
         $datas = Seminar::find($id);
-        $dosens      = Dosen::where('status',1)->orderBy('nama','desc')->get();
+        $dosens     = Dosen::where('status',1)->orderBy('nama','desc')->get();
         $roles      = RoleSeminar::all();
         $kegiatans  = JenisKegiatan::all();
         return view('pages.dosen.seminarUpdateForm')->withDatas($datas)->withDosens($dosens)

@@ -143,6 +143,23 @@ class MahasiswaController extends Controller
     }
 
     //mahasiswa dan lulusan section
+    public function viewOnlyMhs()
+    {
+        $jumlahmhs = MahasiswaDanLulusan::all();
+        $years = array();
+        $time = new \DateTime('now');
+        $newtime = $time->modify('-0 year' )->format('Y');
+        $newtime1= $time->modify('-1 year' )->format('Y');
+        $newtime2= $time->modify('-1 year' )->format('Y');
+        $newtime3= $time->modify('-1 year' )->format('Y');
+        $newtime4= $time->modify('-1 year' )->format('Y');
+        $years[0] = $newtime;
+        $years[1] = $newtime1;
+        $years[2] = $newtime2;
+        $years[3] = $newtime3;
+        $years[4] = $newtime4;
+       return view('pages.mahasiswa.viewMhsDanLulusanOnly')->withJumlahmhs($jumlahmhs)->withYears($years);
+    }
 
     public function viewAllLulusanMhs()
     {
@@ -200,6 +217,28 @@ class MahasiswaController extends Controller
             'jumlahWNA' => 'required|numeric',
         ));
 
+        $id = MahasiswaDanLulusan::where('tahun_akademik',$request->tahunAkademik)->get(['id'])->toArray();
+        if(isset($id))
+        {
+            $data = MahasiswaDanLulusan::find($id[0]["id"]);
+            $data->tahun_akademik = $request->tahunAkademik;
+            $data->daya_tampung = $request->dayaTampung;
+            $data->ikut_seleksi = $request->ikutSeleksi;
+            $data->lulus_seleksi = $request->lulusSeleksi;
+            $data->mhsbr_bukan_transfer = $request->bukanTransfer;
+            $data->mhsbr_transfer = $request->transfer;
+            $data->total_mhs_bknTransfer = $request->totalBknTransfer;
+            $data->total_mhs_transfer = $request->totalTransfer;
+            $data->lulusan_bkn_transfer = $request->lulusBknTransfer;
+            $data->lulusan_transfer = $request->lulusTransfer;
+            $data->ipk_reg_min = $request->ipkmin;
+            $data->ipk_reg_rat = $request->ipkrat;
+            $data->ipk_reg_mak = $request->ipkmak;
+            $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
+            $data->save();
+
+            return redirect()->route('mahasiswa.lulusan.view');
+        }
 
         $data = new MahasiswaDanLulusan();
         $data->tahun_akademik = $request->tahunAkademik;
@@ -257,27 +296,24 @@ class MahasiswaController extends Controller
             'ipkrat' => 'required|numeric',
             'jumlahWNA' => 'required|numeric',
         ));
+            $data = MahasiswaDanLulusan::find($id);
+            $data->tahun_akademik = $request->tahunAkademik;
+            $data->daya_tampung = $request->dayaTampung;
+            $data->ikut_seleksi = $request->ikutSeleksi;
+            $data->lulus_seleksi = $request->lulusSeleksi;
+            $data->mhsbr_bukan_transfer = $request->bukanTransfer;
+            $data->mhsbr_transfer = $request->transfer;
+            $data->total_mhs_bknTransfer = $request->totalBknTransfer;
+            $data->total_mhs_transfer = $request->totalTransfer;
+            $data->lulusan_bkn_transfer = $request->lulusBknTransfer;
+            $data->lulusan_transfer = $request->lulusTransfer;
+            $data->ipk_reg_min = $request->ipkmin;
+            $data->ipk_reg_rat = $request->ipkrat;
+            $data->ipk_reg_mak = $request->ipkmak;
+            $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
 
-
-        $data = MahasiswaDanLulusan::find($id);
-        $data->tahun_akademik = $request->tahunAkademik;
-        $data->daya_tampung = $request->dayaTampung;
-        $data->ikut_seleksi = $request->ikutSeleksi;
-        $data->lulus_seleksi = $request->lulusSeleksi;
-        $data->mhsbr_bukan_transfer = $request->bukanTransfer;
-        $data->mhsbr_transfer = $request->transfer;
-        $data->total_mhs_bknTransfer = $request->totalBknTransfer;
-        $data->total_mhs_transfer = $request->totalTransfer;
-        $data->lulusan_bkn_transfer = $request->lulusBknTransfer;
-        $data->lulusan_transfer = $request->lulusTransfer;
-        $data->ipk_reg_min = $request->ipkmin;
-        $data->ipk_reg_rat = $request->ipkrat;
-        $data->ipk_reg_mak = $request->ipkmak;
-        $data->jumlah_mahasiswa_wna = $request->jumlahWNA;
-
-        $data->save();
-        // return 'berhasil';
-        return redirect()->route('mahasiswa.lulusan.view');
+            $data->save();
+            return redirect()->route('mahasiswa.lulusan.view');
     }
 
     public function deleteLulusanMhs($id)
@@ -381,23 +417,45 @@ class MahasiswaController extends Controller
             'kurang' => 'required|numeric',
         ));
 
-        $data = new EvaluasiLulusan();
-        $data->jenis_kemampuan_id = $request->jenisKemampuan;
-        $data->sangat_baik = $request->sgtBaik;
-        $data->baik = $request->baik;
-        $data->cukup = $request->cukup;
-        $data->kurang = $request->kurang;
-        $data->pelacakan = $request->pelacakan;
-        $data->save();
-
-        if(isset($request->persentase)||isset($request->waktuTgu))
+        $id = EvaluasiLulusan::where('jenis_kemampuan_id',$request->jenisKemampuan)->get(['id'])->toArray();
+        if(isset($id))
         {
-            $dataLanjutan = EvaluasiLanjutan::find(1);
-            $dataLanjutan->persentase = $request->persentase;
-            $dataLanjutan->waktu_tunggu = $request->waktuTgu;
-            $dataLanjutan->save();
+            $x = EvaluasiLulusan::find($id[0]["id"]);
+            $x->jenis_kemampuan_id = $request->jenisKemampuan;
+            $x->sangat_baik = $request->sgtBaik;
+            $x->baik = $request->baik;
+            $x->cukup = $request->cukup;
+            $x->kurang = $request->kurang;
+            $x->pelacakan = $request->pelacakan;
+            $x->save();
+
+            if (isset($request->persentase) || isset($request->waktuTgu)) {
+                $dataLanjutan = EvaluasiLanjutan::find(1);
+                $dataLanjutan->persentase = $request->persentase;
+                $dataLanjutan->waktu_tunggu = $request->waktuTgu;
+                $dataLanjutan->save();
+            }
+
+            return redirect()->route('evaluasi.lulusan.view');
         }
 
+        else {
+            $data = new EvaluasiLulusan();
+            $data->jenis_kemampuan_id = $request->jenisKemampuan;
+            $data->sangat_baik = $request->sgtBaik;
+            $data->baik = $request->baik;
+            $data->cukup = $request->cukup;
+            $data->kurang = $request->kurang;
+            $data->pelacakan = $request->pelacakan;
+            $data->save();
+
+            if (isset($request->persentase) || isset($request->waktuTgu)) {
+                $dataLanjutan = EvaluasiLanjutan::find(1);
+                $dataLanjutan->persentase = $request->persentase;
+                $dataLanjutan->waktu_tunggu = $request->waktuTgu;
+                $dataLanjutan->save();
+            }
+        }
         return redirect()->route('evaluasi.lulusan.view');
     }
 
@@ -435,6 +493,13 @@ class MahasiswaController extends Controller
             $dataLanjutan->save();
         }
 
+        return redirect()->route('evaluasi.lulusan.view');
+    }
+
+    public function deleteEvaLulusan($id)
+    {
+        $data = EvaluasiLulusan::find($id);
+        $data->delete();
         return redirect()->route('evaluasi.lulusan.view');
     }
 }
