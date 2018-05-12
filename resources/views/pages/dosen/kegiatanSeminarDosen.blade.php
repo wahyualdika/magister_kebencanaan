@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleTahun">Tahun</label>
-                            <input type="text" class="form-control p-input" name="tahun" id="Tahun" placeholder="Tahun">
+                            <input type="number" class="form-control p-input" name="tahun" id="Tahun" placeholder="Tahun">
                         </div>
                         <div class="form-group"><label for="sebagai">Sebagai</label>
                             <select class="select2-multi form-control" name="status">

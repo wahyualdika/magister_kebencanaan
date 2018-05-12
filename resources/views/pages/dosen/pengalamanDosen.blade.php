@@ -38,11 +38,11 @@
                         <div class="form-group"><label for="exampleNIP">Kurun Waktu</label>
                         <div class="form-group">
                             <label for="exampleNIP">Tahun Awal</label>
-                            <input type="text" class="form-control p-input" name="tahunAwal" id="Tahun Awal" placeholder="Tahun Awal">
+                            <input type="number" class="form-control p-input" name="tahunAwal" id="Tahun Awal" placeholder="Tahun Awal">
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Tahun Akhir</label>
-                            <input type="text" class="form-control p-input" name="tahunAkhir" id="Tahun Akhir" placeholder="Tahun Akhir">
+                            <input type="number" class="form-control p-input" name="tahunAkhir" id="Tahun Akhir" placeholder="Tahun Akhir">
                         </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">Tingkat</label>

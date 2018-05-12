@@ -132,7 +132,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-mahasiswa" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Mahasiswa<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Form Mahasiswa<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-mahasiswa">
                             <ul class="nav flex-column sub-menu">
@@ -143,22 +143,27 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.mahasiswa.form')}}">
-                                        Masukkan Data
+                                        Data Mahasiswa
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('mahasiswa.penelitian.form')}}">
-                                        Masukkan Penelitian
+                                        Data Penelitian
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('mahasiswa.lulusan.form')}}">
-                                        Masukkan Mahasiswa dan Lulusan
+                                        Data Lulusan
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('mahasiswa.dana.form')}}">
-                                        Masukkan Mahasiswa dan Dana Operasional
+                                        Data Dana Operasional
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('evaluasi.lulusan.form')}}">
+                                        Data Evaluasi Lulusan
                                     </a>
                                 </li>
                             </ul>

@@ -37,6 +37,20 @@
                 <div class="card card-statistics">
                     <div class="card-body">
                         <div class="clearfix">
+                            <a href="{{route('mahasiswa.lulusan.viewOnly')}}">
+                                <div class="float-left">
+                                    <p class="card-text text-dark">Daftar Mahasiswa dan Lulusan Lanjutan</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="clearfix">
                             <a href="{{route('mahasiswa.penelitian.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Daftar Penelitian Mahasiswa</p>
@@ -74,6 +88,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

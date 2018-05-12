@@ -151,3 +151,7 @@ Route::prefix('mahasiswa')->group(function(){
     Route::post('/evaluasi_lulusan/update/{id}','MahasiswaController@updateEvaLulusan')->name('evaluasi.lulusan.update');
     Route::post('/evaluasi_lulusan/delete/{id}','MahasiswaController@deleteEvaLulusan')->name('evaluasi.lulusan.delete');
 });
+
+Route::prefix('mata_kuliah')->group(function(){
+    Route::get('/struktur_kurikulum/form','MahasiswaController@formEvaLulusan')->name('evaluasi.lulusan.form');
+});

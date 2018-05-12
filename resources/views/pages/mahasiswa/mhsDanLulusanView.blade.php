@@ -40,7 +40,6 @@
                                     {{ csrf_field() }}
                                     <div class="btn-group">
                                         <a href="{{route('mahasiswa.lulusan.formUpdate',['id'=>$data->id])}}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
-                                        <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
                                         <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
                                     </div>
                                 </form>
@@ -68,8 +67,12 @@
                         </tr>
                     @endforeach
                 </table>
-                <table>
+                <table class="table table-hover">
                     <tr>
+                        <th>Total</th>
+                        <th></th>
+                        <th></th>
+                        <th colspan="2"></th>
                         @foreach($jumlahs as $jumlah)
                             <th style="text-align: center">{!! $jumlah !!}</th>
                         @endforeach

@@ -30,12 +30,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Nama Lembaga</label>
-                            <input type="text" class="form-control p-input" value="{{$data->lembaga}}" name="lembaga" id="Lembaga" placeholder="Nama Lembaga">
+                            <input type="number" class="form-control p-input" value="{{$data->lembaga}}" name="lembaga" id="Lembaga" placeholder="Nama Lembaga">
                         </div>
                         <div class="form-group"><label for="exampleNIP">Kurun Waktu</label>
                             <div class="form-group">
                                 <label for="exampleNIP">Tahun Awal</label>
-                                <input type="text" class="form-control p-input" value="{{$data->tahun_awal}}" name="tahunAwal" id="Tahun Awal" placeholder="Tahun Awal">
+                                <input type="number" class="form-control p-input" value="{{$data->tahun_awal}}" name="tahunAwal" id="Tahun Awal" placeholder="Tahun Awal">
                             </div>
                             <div class="form-group">
                                 <label for="exampleNIP">Tahun Akhir</label>
