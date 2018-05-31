@@ -43,32 +43,31 @@ class DosenController extends Controller
             'nidn'  => 'required|max:255',
         ));
 
-        $data = new Dosen();
-        $data->nama = $request->nama;
-        $data->nidn = $request->nidn;
-        $data->tanggal_lahir  = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
-        //$data->tanggal_lahir = $request->tanggalLahir;
-        $data->jabatan_akademik_id = $request->jabatanAkademik;
-        $data->gelar_akademik_s1 = $request->gelars1;
-        $data->asal_pt_s1 = $request->asals1;
-        $data->bidang_keahlian_s1 = $request->keahlians1;
-        $data->gelar_akademik_s2 = $request->gelars2;
-        $data->asal_pt_s2 = $request->asals2;
-        $data->bidang_keahlian_s2 = $request->keahlians2;
-        $data->gelar_akademik_s3 = $request->gelars3;
-        $data->asal_pt_s3 = $request->asals3;
-        $data->bidang_keahlian_s3 = $request->keahlians3;
-        $data->status = $request->status;
-        $data->sertifikasi = $request->sertifikasi;
-        //dd($data->tanggal_lahir);
+        $data                        = new Dosen();
+        $data->nama                  = $request->nama;
+        $data->nidn                  = $request->nidn;
+        $data->tanggal_lahir         = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
+        $data->jabatan_akademik_id   = $request->jabatanAkademik;
+        $data->gelar_akademik_s1     = $request->gelars1;
+        $data->asal_pt_s1            = $request->asals1;
+        $data->bidang_keahlian_s1    = $request->keahlians1;
+        $data->gelar_akademik_s2     = $request->gelars2;
+        $data->asal_pt_s2            = $request->asals2;
+        $data->bidang_keahlian_s2    = $request->keahlians2;
+        $data->gelar_akademik_s3     = $request->gelars3;
+        $data->asal_pt_s3            = $request->asals3;
+        $data->bidang_keahlian_s3    = $request->keahlians3;
+        $data->status                = $request->status;
+        $data->sertifikasi           = $request->sertifikasi;
+
         $data->save();
 
         return redirect()->route('admin.dosen.index');
     }
 
     public function editForm($id){
-        $data = Dosen::find($id);
-        $jabatans = JabatanAkademik::all();
+        $data       = Dosen::find($id);
+        $jabatans   = JabatanAkademik::all();
         //dd($data);
         return view('pages.dosen.dosenFormEdit')->withData($data)->withJabatans($jabatans);
     }
@@ -81,10 +80,11 @@ class DosenController extends Controller
 
     public function viewDosenTetap()
     {
-        $datas = Dosen::where('status',1)->orderBy('nama','desc')->get();
-        $guru = Dosen::where('jabatan_akademik_id',1)->count();
+        $datas  = Dosen::where('status',1)->orderBy('nama','desc')->get();
+        $guru   = Dosen::where('jabatan_akademik_id',1)->count();
         $kepala = Dosen::where('jabatan_akademik_id',2)->count();
-        $s3 = Dosen::where('gelar_akademik_s3','!=',null)->count();
+        $s3     = Dosen::where('gelar_akademik_s3','!=',null)->count();
+
         return view('pages.dosen.adminDosenTetap')->withDatas($datas)
                                                         ->withGuru($guru)
                                                         ->withKepala($kepala)
@@ -101,17 +101,17 @@ class DosenController extends Controller
     public function storePrestasi(Request $request)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'tahunPencapaian'  => 'required|max:255',
-            'prestasi' => 'required|max:255',
-            'tingkat' => 'required|max:255',
+            'nama'              => 'required|max:255',
+            'tahunPencapaian'   => 'required|max:255',
+            'prestasi'          => 'required|max:255',
+            'tingkat'           => 'required|max:255',
         ));
 
-        $data = new Prestasi();
-        $data->nama_prestasi = $request->prestasi;
+        $data                   = new Prestasi();
+        $data->nama_prestasi    = $request->prestasi;
         $data->tahun_pencapaian = $request->tahunPencapaian;
-        $data->tingkat_id = $request->tingkat;
-        $data->dosen_id = $request->nama;
+        $data->tingkat_id       = $request->tingkat;
+        $data->dosen_id         = $request->nama;
         $data->save();
 
         return redirect()->route('admin.dosenPrestasi.view');
@@ -119,7 +119,7 @@ class DosenController extends Controller
 
     public function editPrestasiForm($id)
     {
-        $data = Prestasi::find($id);
+        $data     = Prestasi::find($id);
         $tingkats = Tingkat::all();
         return view('pages.dosen.prestasiFormEdit')->withData($data)->withTingkats($tingkats);
     }
@@ -127,17 +127,17 @@ class DosenController extends Controller
     public function updatePrestasi(Request $request,$id)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'tahunPencapaian'  => 'required|max:255',
-            'prestasi' => 'required|max:255',
-            'tingkat' => 'required|max:255',
+            'nama'              => 'required|max:255',
+            'tahunPencapaian'   => 'required|max:255',
+            'prestasi'          => 'required|max:255',
+            'tingkat'           => 'required|max:255',
         ));
 
-        $data = Prestasi::find($id);
-        $data->nama_prestasi = $request->prestasi;
+        $data                   = Prestasi::find($id);
+        $data->nama_prestasi    = $request->prestasi;
         $data->tahun_pencapaian = $request->tahunPencapaian;
-        $data->tingkat_id = $request->tingkat;
-        $data->dosen_id = $request->nama;
+        $data->tingkat_id       = $request->tingkat;
+        $data->dosen_id         = $request->nama;
         $data->save();
 
         return redirect()->route('admin.dosenPrestasi.view');
@@ -146,10 +146,11 @@ class DosenController extends Controller
 
     public function viewPrestasiDosen()
     {
-        $tingkats = array();
-        $lokal = Prestasi::where('tingkat_id',1)->count();
-        $nasional = Prestasi::where('tingkat_id',2)->count();
-        $internasional =Prestasi::where('tingkat_id',3)->count();
+        $tingkats       = array();
+        $lokal          = Prestasi::where('tingkat_id',1)->count();
+        $nasional       = Prestasi::where('tingkat_id',2)->count();
+        $internasional  = Prestasi::where('tingkat_id',3)->count();
+
         $tingkats[0] = $lokal;
         $tingkats[1] = $nasional;
         $tingkats[2] = $internasional;
@@ -166,26 +167,26 @@ class DosenController extends Controller
 
     public function pengalamanDosen()
     {
-        $datas = Dosen::where('status',1)->orderBy('nama','desc')->get();
-        $tingkats= Tingkat::all();
+        $datas      = Dosen::where('status',1)->orderBy('nama','desc')->get();
+        $tingkats   = Tingkat::all();
         return view('pages.dosen.pengalamanDosen')->withDatas($datas)->withTingkats($tingkats);
     }
 
     public function storePengalaman(Request $request)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'lembaga'  => 'required|max:255',
-            'tahunAwal' => 'required|max:255',
-            'tahunAkhir' => 'required|max:255',
+            'nama'          => 'required|max:255',
+            'lembaga'       => 'required|max:255',
+            'tahunAwal'     => 'required|max:255',
+            'tahunAkhir'    => 'required|max:255',
         ));
 
-        $data = new Pengalaman();
-        $data->dosen_id = $request->nama;
-        $data->lembaga = $request->lembaga;
-        $data->tahun_awal = $request->tahunAwal;
-        $data->tahun_akhir = $request->tahunAkhir;
-        $data->tingkat_id = $request->tingkat;
+        $data                   = new Pengalaman();
+        $data->dosen_id         = $request->nama;
+        $data->lembaga          = $request->lembaga;
+        $data->tahun_awal       = $request->tahunAwal;
+        $data->tahun_akhir      = $request->tahunAkhir;
+        $data->tingkat_id       = $request->tingkat;
         $data->save();
 
         return redirect()->route('admin.dosenPengalaman.view');
@@ -193,26 +194,26 @@ class DosenController extends Controller
 
     public function editPengalamanForm($id)
     {
-        $data = Pengalaman::find($id);
-        $tingkats = Tingkat::all();
+        $data       = Pengalaman::find($id);
+        $tingkats   = Tingkat::all();
         return view('pages.dosen.pengalamanFormEdit')->withData($data)->withTingkats($tingkats);
     }
 
     public function updatePengalaman(Request $request,$id)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'lembaga'  => 'required|max:255',
-            'tahunAwal' => 'required|max:255',
-            'tahunAkhir' => 'required|max:255',
+            'nama'          => 'required|max:255',
+            'lembaga'       => 'required|max:255',
+            'tahunAwal'     => 'required|max:255',
+            'tahunAkhir'    => 'required|max:255',
         ));
 
-        $data = Pengalaman::find($id);
-        $data->dosen_id = $request->nama;
-        $data->lembaga = $request->lembaga;
-        $data->tahun_awal = $request->tahunAwal;
-        $data->tahun_akhir = $request->tahunAkhir;
-        $data->tingkat_id = $request->tingkat;
+        $data               = Pengalaman::find($id);
+        $data->dosen_id     = $request->nama;
+        $data->lembaga      = $request->lembaga;
+        $data->tahun_awal   = $request->tahunAwal;
+        $data->tahun_akhir  = $request->tahunAkhir;
+        $data->tingkat_id   = $request->tingkat;
         $data->save();
 
         return redirect()->route('admin.dosenPengalaman.view');
@@ -220,12 +221,14 @@ class DosenController extends Controller
 
     public function viewPengalamanDosen()
     {
-        $tingkats = array();
-        $nasional = Pengalaman::where('tingkat_id',2)->count();
-        $internasional =Pengalaman::where('tingkat_id',3)->count();
+        $tingkats      = array();
+        $nasional      = Pengalaman::where('tingkat_id',2)->count();
+        $internasional = Pengalaman::where('tingkat_id',3)->count();
+
         $tingkats[0] = $nasional;
         $tingkats[1] = $internasional;
-        $datas = Pengalaman::all();
+        $datas       = Pengalaman::all();
+
         return view('pages.dosen.viewPengalamanDosen')->withDatas($datas)->withTingkats($tingkats);
     }
 
@@ -240,10 +243,12 @@ class DosenController extends Controller
     {
         $penyaji = Seminar::where('seminar_role_id',1)->count();
         $peserta = Seminar::where('seminar_role_id',2)->count();
-        $rolearr = array();
+
+        $rolearr    = array();
         $rolearr[0] = $penyaji;
         $rolearr[1] = $peserta;
-        $datas = Seminar::all();
+
+        $datas      = Seminar::all();
         return view('pages.dosen.viewSeminarDosen')->withDatas($datas)->withRolearr($rolearr);
     }
 
@@ -261,19 +266,19 @@ class DosenController extends Controller
     public function storeKegiatanSeminar(Request $request)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'jenisKegiatan'  => 'required|max:255',
-            'tahun' => 'required|max:255',
-            'tempat' => 'required|max:255',
-            'status' => 'required|max:255',
+            'nama'              => 'required|max:255',
+            'jenisKegiatan'     => 'required|max:255',
+            'tahun'             => 'required|max:255',
+            'tempat'            => 'required|max:255',
+            'status'            => 'required|max:255',
         ));
 
-        $data = new Seminar();
-        $data->dosen_id = $request->nama;
-        $data->kegiatan_seminar_id = $request->jenisKegiatan;
-        $data->tempat = $request->tempat;
-        $data->tahun = $request->tahun;
-        $data->seminar_role_id = $request->status;
+        $data                        = new Seminar();
+        $data->dosen_id              = $request->nama;
+        $data->kegiatan_seminar_id   = $request->jenisKegiatan;
+        $data->tempat                = $request->tempat;
+        $data->tahun                 = $request->tahun;
+        $data->seminar_role_id       = $request->status;
         $data->save();
 
         return redirect()->route('admin.dosenSeminar.view');
@@ -281,7 +286,7 @@ class DosenController extends Controller
 
     public function seminarUpdateForm($id)
     {
-        $datas = Seminar::find($id);
+        $datas      = Seminar::find($id);
         $dosens     = Dosen::where('status',1)->orderBy('nama','desc')->get();
         $roles      = RoleSeminar::all();
         $kegiatans  = JenisKegiatan::all();
@@ -322,28 +327,27 @@ class DosenController extends Controller
     public function update(Request $request,$id)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
+            'nama'  => 'required|max:255',
             'nidn'  => 'required|max:255',
         ));
 
-        $data = Dosen::find($id);
-        $data->nama = $request->nama;
-        $data->nidn = $request->nidn;
-        $data->tanggal_lahir  = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
-        //$data->tanggal_lahir = $request->tanggalLahir;
-        $data->jabatan_akademik_id = $request->jabatanAkademik;
-        $data->gelar_akademik_s1 = $request->gelars1;
-        $data->asal_pt_s1 = $request->asals1;
-        $data->bidang_keahlian_s1 = $request->keahlians1;
-        $data->gelar_akademik_s2 = $request->gelars2;
-        $data->asal_pt_s2 = $request->asals2;
-        $data->bidang_keahlian_s2 = $request->keahlians2;
-        $data->gelar_akademik_s3 = $request->gelars3;
-        $data->asal_pt_s3 = $request->asals3;
-        $data->bidang_keahlian_s3 = $request->keahlians3;
-        $data->status = $request->status;
-        $data->sertifikasi = $request->sertifikasi;
-        //dd($data->tanggal_lahir);
+        $data                           = Dosen::find($id);
+        $data->nama                     = $request->nama;
+        $data->nidn                     = $request->nidn;
+        $data->tanggal_lahir            = DateTime::createFromFormat('d/m/Y', $request->tanggalLahir)->format('Y-m-d');
+        $data->jabatan_akademik_id      = $request->jabatanAkademik;
+        $data->gelar_akademik_s1        = $request->gelars1;
+        $data->asal_pt_s1               = $request->asals1;
+        $data->bidang_keahlian_s1       = $request->keahlians1;
+        $data->gelar_akademik_s2        = $request->gelars2;
+        $data->asal_pt_s2               = $request->asals2;
+        $data->bidang_keahlian_s2       = $request->keahlians2;
+        $data->gelar_akademik_s3        = $request->gelars3;
+        $data->asal_pt_s3               = $request->asals3;
+        $data->bidang_keahlian_s3       = $request->keahlians3;
+        $data->status                   = $request->status;
+        $data->sertifikasi              = $request->sertifikasi;
+
         $data->save();
 
         return redirect()->route('admin.dosen.index');
@@ -353,7 +357,7 @@ class DosenController extends Controller
     public function aktivitasDosenView()
     {
 
-        $datas = AktivitasDosen::all();
+        $datas  = AktivitasDosen::all();
         $amount = $datas->count();
         return view('pages.dosen.aktivitasDosenView')->withDatas($datas)->withAmount($amount);
     }
@@ -367,25 +371,25 @@ class DosenController extends Controller
     public function aktivitasDosenStore(Request $request)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
+            'nama'                 => 'required|max:255',
             'pengajaranPsSendiri'  => 'required|max:255',
-            'pengajaranPsLain'  => 'required|max:255',
-            'pengajaranPtLain'  => 'required|max:255',
-            'sksPenelitian'  => 'required|max:255',
-            'sksPengabdian'  => 'required|max:255',
-            'manajemenPtSendiri'  => 'required|max:255',
-            'manajemenPtLain'  => 'required|max:255',
+            'pengajaranPsLain'     => 'required|max:255',
+            'pengajaranPtLain'     => 'required|max:255',
+            'sksPenelitian'        => 'required|max:255',
+            'sksPengabdian'        => 'required|max:255',
+            'manajemenPtSendiri'   => 'required|max:255',
+            'manajemenPtLain'      => 'required|max:255',
         ));
 
-        $data = new AktivitasDosen();
-        $data->dosen_id = $request->nama;
-        $data->sks_ps_sendiri = $request->pengajaranPsSendiri;
-        $data->sks_ps_lain = $request->pengajaranPsLain;
-        $data->sks_ps_ptLain = $request->pengajaranPtLain;
-        $data->sks_penelitian = $request->sksPenelitian;
+        $data                            = new AktivitasDosen();
+        $data->dosen_id                  = $request->nama;
+        $data->sks_ps_sendiri            = $request->pengajaranPsSendiri;
+        $data->sks_ps_lain               = $request->pengajaranPsLain;
+        $data->sks_ps_ptLain             = $request->pengajaranPtLain;
+        $data->sks_penelitian            = $request->sksPenelitian;
         $data->sks_pengabdian_masyarakat = $request->sksPengabdian;
-        $data->sks_manajemen_ptSendiri = $request->manajemenPtSendiri;
-        $data->sks_manajemen_ptLain =  $request->manajemenPtLain;
+        $data->sks_manajemen_ptSendiri   = $request->manajemenPtSendiri;
+        $data->sks_manajemen_ptLain      = $request->manajemenPtLain;
 
         $data->save();
         return redirect()->route('admin.dosen.aktivitasView');
@@ -394,32 +398,33 @@ class DosenController extends Controller
     public function aktivitasUpdateForm($id)
     {
         $dosens = Dosen::where('status',1)->get();
-        $data = AktivitasDosen::find($id);
+        $data   = AktivitasDosen::find($id);
+
         return view('pages.dosen.aktivitasDosenUpdate')->withDosens($dosens)->withData($data);
     }
 
     public function aktivitasDosenUpdate(Request $request,$id)
     {
         $this->validate($request,array(
-            'nama' => 'required|max:255',
-            'pengajaranPsSendiri'  => 'required|max:255',
-            'pengajaranPsLain'  => 'required|max:255',
-            'pengajaranPtLain'  => 'required|max:255',
-            'sksPenelitian'  => 'required|max:255',
-            'sksPengabdian'  => 'required|max:255',
-            'manajemenPtSendiri'  => 'required|max:255',
-            'manajemenPtLain'  => 'required|max:255',
+            'nama'                  => 'required|max:255',
+            'pengajaranPsSendiri'   => 'required|max:255',
+            'pengajaranPsLain'      => 'required|max:255',
+            'pengajaranPtLain'      => 'required|max:255',
+            'sksPenelitian'         => 'required|max:255',
+            'sksPengabdian'         => 'required|max:255',
+            'manajemenPtSendiri'    => 'required|max:255',
+            'manajemenPtLain'       => 'required|max:255',
         ));
 
-        $data = AktivitasDosen::find($id);
-        $data->dosen_id = $request->nama;
-        $data->sks_ps_sendiri = $request->pengajaranPsSendiri;
-        $data->sks_ps_lain = $request->pengajaranPsLain;
-        $data->sks_ps_ptLain = $request->pengajaranPtLain;
-        $data->sks_penelitian = $request->sksPenelitian;
+        $data                            = AktivitasDosen::find($id);
+        $data->dosen_id                  = $request->nama;
+        $data->sks_ps_sendiri            = $request->pengajaranPsSendiri;
+        $data->sks_ps_lain               = $request->pengajaranPsLain;
+        $data->sks_ps_ptLain             = $request->pengajaranPtLain;
+        $data->sks_penelitian            = $request->sksPenelitian;
         $data->sks_pengabdian_masyarakat = $request->sksPengabdian;
-        $data->sks_manajemen_ptSendiri = $request->manajemenPtSendiri;
-        $data->sks_manajemen_ptLain =  $request->manajemenPtLain;
+        $data->sks_manajemen_ptSendiri   = $request->manajemenPtSendiri;
+        $data->sks_manajemen_ptLain      = $request->manajemenPtLain;
 
         $data->save();
         return redirect()->route('admin.dosen.aktivitasView');

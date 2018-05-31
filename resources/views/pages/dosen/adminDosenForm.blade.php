@@ -56,14 +56,14 @@
                                 </select>
                             </div>
                             <div class="form-group"><label for="exampleS1">Data S1</label>
-                            <div class="form-group">
-                                <label for="exampleNIP">Gelar Akedemik S1</label>
-                                <input type="text" class="form-control p-input" name="gelars1" id="S1" placeholder="Gelar Akedemik">
-                                <label for="exampleNIP">Asal Perguruan Tinggi S1</label>
-                                <input type="text" class="form-control p-input" name="asals1" id="S1" placeholder="Asal Perguruan Tinggi">
-                                <label for="exampleNIP">Bidang Keahlian S1</label>
-                                <input type="text" class="form-control p-input" name="keahlians1" id="S1" placeholder="Bidang Keahlian">
-                            </div>
+                                <div class="form-group">
+                                    <label for="exampleNIP">Gelar Akedemik S1</label>
+                                    <input type="text" class="form-control p-input" name="gelars1" id="S1" placeholder="Gelar Akedemik">
+                                    <label for="exampleNIP">Asal Perguruan Tinggi S1</label>
+                                    <input type="text" class="form-control p-input" name="asals1" id="S1" placeholder="Asal Perguruan Tinggi">
+                                    <label for="exampleNIP">Bidang Keahlian S1</label>
+                                    <input type="text" class="form-control p-input" name="keahlians1" id="S1" placeholder="Bidang Keahlian">
+                                </div>
                             </div>
                             <div class="form-group"><label for="exampleS1">Data S2</label>
                                 <div class="form-group">
@@ -74,6 +74,8 @@
                                     <label for="exampleNIP">Bidang Keahlian S2</label>
                                     <input type="text" class="form-control p-input" name="keahlians2" id="S2" placeholder="Bidang Keahlian">
                                 </div>
+                            </div>
+                            <div class="form-group"><label for="exampleS1">Status dan Sertifikasi</label>
                                 <div class="form-group"><label for="exampleS1">Status Dosen</label>
                                     <select class="select2-multi form-control" name="status">
                                         <option value="1">Tetap</option>

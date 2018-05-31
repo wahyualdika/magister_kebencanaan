@@ -150,8 +150,41 @@ Route::prefix('mahasiswa')->group(function(){
     Route::get('/evaluasi_lulusan/update/{id}/edit','MahasiswaController@formUpdateEvaLulusan')->name('evaluasi.lulusan.formUpdate');
     Route::post('/evaluasi_lulusan/update/{id}','MahasiswaController@updateEvaLulusan')->name('evaluasi.lulusan.update');
     Route::post('/evaluasi_lulusan/delete/{id}','MahasiswaController@deleteEvaLulusan')->name('evaluasi.lulusan.delete');
+
+    //Data Alumni
+    Route::get('/alumni/form','MahasiswaController@alumniForm')->name('admin.alumni.form');
+    Route::post('/alumni/store','MahasiswaController@storeAlumni')->name('admin.alumni.store');
+    Route::get('/alumni/view','MahasiswaController@alumniView')->name('admin.alumni.view');
+    Route::get('/alumni/update/{id}/edit','MahasiswaController@alumniFormUpdate')->name('admin.alumni.formUpdate');
+    Route::post('/alumni/update/{id}','MahasiswaController@alumniUpdate')->name('admin.alumni.update');
+    Route::post('/alumni/delete/{id}','MahasiswaController@alumniDelete')->name('admin.alumni.delete');
 });
 
 Route::prefix('mata_kuliah')->group(function(){
-    Route::get('/struktur_kurikulum/form','MahasiswaController@formEvaLulusan')->name('evaluasi.lulusan.form');
+    Route::get('/daftar_tampil/view','KurikulumController@daftarTampil')->name('mataKuliah.daftarTampil.view');
+
+    Route::get('/struktur_kurikulum/view','KurikulumController@kurikulumView')->name('mataKuliah.struktur.view');
+    Route::get('/struktur_kurikulum/form','KurikulumController@kurikulumForm')->name('mataKuliah.struktur.form');
+    Route::post('/struktur_kurikulum/store','KurikulumController@storeKurikulum')->name('mataKuliah.struktur.store');
+    Route::get('/struktur_kurikulum/update/{id}/edit','KurikulumController@kurikulumFormUpdate')->name('mataKuliah.struktur.formUpdate');
+    Route::post('/struktur_kurikulum/update/{id}','KurikulumController@kurikulumUpdate')->name('mataKuliah.struktur.update');
+    Route::post('/struktur_kurikulum/delete/{id}','KurikulumController@kurikulumDelete')->name('mataKuliah.struktur.delete');
+
+    //MATA KULIAH SECTION
+    Route::get('/struktur_kurikulum/mk_pilihan/view','KurikulumController@mkPilihanView')->name('mataKuliah.pilihan.view');
+    Route::get('/struktur_kurikulum/mk_pilihan/form','KurikulumController@mkPilihanForm')->name('mataKuliah.pilihan.form');
+    Route::post('/struktur_kurikulum/mk_pilihan/store','KurikulumController@storeMkPilihan')->name('mataKuliah.pilihan.store');
+    Route::post('/struktur_kurikulum/mk_pilihan/getAjaxMk','KurikulumController@getAjaxMk')->name('mataKuliah.pilihan.getAjaxMk');
+    Route::get('/struktur_kurikulum/mk_pilihan/update/{id}/edit','KurikulumController@mkPilihanFormUpdate')->name('mataKuliah.pilihan.formUpdate');
+    Route::post('/struktur_kurikulum/mk_pilihan/updateAjaxMk','KurikulumController@updateAjaxMk')->name('mataKuliah.pilihan.updateAjaxMk');
+    Route::post('/struktur_kurikulum/mk_pilihan/update/{id}','KurikulumController@mkPilihanUpdate')->name('mataKuliah.pilihan.update');
+    Route::post('/struktur_kurikulum/mk_pilihan/delete/{id}','KurikulumController@mkPilihanDelete')->name('mataKuliah.pilihan.delete');
+
+    //SKS MINIMAL MK
+    Route::get('/struktur_kurikulum/sks_minimal/view','KurikulumController@sksMinimalView')->name('mataKuliah.sksMinimal.view');
+    Route::get('/struktur_kurikulum/sks_minimal/form','KurikulumController@sksMinimalForm')->name('mataKuliah.sksMinimal.form');
+    Route::post('/struktur_kurikulum/sks_minimal/store','KurikulumController@storeSKSMinimal')->name('mataKuliah.sksMinimal.store');
+    Route::get('/struktur_kurikulum/sks_minimal/update/{id}/edit','KurikulumController@sksMinimalFormUpdate')->name('mataKuliah.sksMinimal.formUpdate');
+    Route::get('/struktur_kurikulum/sks_minimal/update/{id}','KurikulumController@sksMinimalUpdate')->name('mataKuliah.sksMinimal.update');
+    Route::post('/struktur_kurikulum/sks_minimal/delete/{id}','KurikulumController@sksMinimalDelete')->name('mataKuliah.sksMinimal.delete');
 });

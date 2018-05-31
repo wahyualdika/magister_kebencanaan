@@ -20,6 +20,15 @@
                     @foreach($datas as $data)
 
                         <tr>
+                            <td>{{ $data->judul}}</td>
+                            <td>@foreach($data->dosen as $dosen)
+                                    <li class="list-group-item">{{$dosen->nama}}</li>
+                                @endforeach
+                            </td>
+                            <td>{{ $data->tempat_publikasi }}</td>
+                            <td>{{ $data->tahun }}</td>
+                            <td>{{ $data->lembaga_sitasi }}</td>
+                            <td>{{ $data->tingkat->nama }}</td>
                             <form class="forms-sample" action="{{url('publikasi/delete/'.$data->id)}}"  method="post">
                                 {{ csrf_field() }}
                                 <td style="text-align: center">
@@ -30,18 +39,7 @@
                                     </div>
                                 </td>
                             </form>
-
-                            <td>{{ $data->judul}}</td>
-                            <td>@foreach($data->dosen as $dosen)
-                                    <li class="list-group-item">{{$dosen->nama}}</li>
-                                @endforeach
-                            </td>
-                            <td>{{ $data->tempat_publikasi }}</td>
-                            <td>{{ $data->tahun }}</td>
-                            <td>{{ $data->lembaga_sitasi }}</td>
-                            <td>{{ $data->tingkat->nama }}</td>
                         </tr>
-
                     @endforeach
                     </tbody>
                 </table>

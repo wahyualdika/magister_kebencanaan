@@ -33,12 +33,14 @@
                         </tr>
                         @php($k++)
                     @endforeach
+                    </tbody>
+                </table>
+                <table class="table table-hover">
                     <tr>
                         <td style="font-weight: bold">Total Tingkat Lokal : {{ $tingkat[0] }}</td>
                     </tr>
                     <tr> <td style="font-weight: bold">Total Tingkat Nasional : {{ $tingkat[1] }}</td> </tr>
                     <tr> <td style="font-weight: bold">Total Tingkat Internasional : {{ $tingkat[2] }}</td> </tr>
-                    </tbody>
                 </table>
             </div>
         </div>

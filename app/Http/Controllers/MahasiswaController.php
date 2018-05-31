@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Alumni;
 use App\EvaluasiLanjutan;
 use App\EvaluasiLulusan;
 use App\JenisKemampuan;
@@ -371,9 +372,9 @@ class MahasiswaController extends Controller
     public function updateDanaMhs(Request $request,$id)
     {
         $this->validate($request,array(
-            'tahunAkademik' => 'required|numeric',
-            'jumlahMahasiswa' => 'required|numeric',
-            'jumlahDana' => 'required|numeric',
+            'tahunAkademik'    => 'required|numeric',
+            'jumlahMahasiswa'  => 'required|numeric',
+            'jumlahDana'       => 'required|numeric',
         ));
 
         $data = MahasiswaDanDana::find($id);
@@ -411,10 +412,10 @@ class MahasiswaController extends Controller
     {
         $this->validate($request,array(
             'jenisKemampuan' => 'required|max:255',
-            'sgtBaik' => 'required|numeric',
-            'baik' => 'required|numeric',
-            'cukup' => 'required|numeric',
-            'kurang' => 'required|numeric',
+            'sgtBaik'        => 'required|numeric',
+            'baik'           => 'required|numeric',
+            'cukup'          => 'required|numeric',
+            'kurang'         => 'required|numeric',
         ));
 
         $id = EvaluasiLulusan::where('jenis_kemampuan_id',$request->jenisKemampuan)->get(['id'])->toArray();
@@ -470,10 +471,10 @@ class MahasiswaController extends Controller
     {
         $this->validate($request,array(
             'jenisKemampuan' => 'required|max:255',
-            'sgtBaik' => 'required|numeric',
-            'baik' => 'required|numeric',
-            'cukup' => 'required|numeric',
-            'kurang' => 'required|numeric',
+            'sgtBaik'        => 'required|numeric',
+            'baik'           => 'required|numeric',
+            'cukup'          => 'required|numeric',
+            'kurang'         => 'required|numeric',
         ));
 
         $data = EvaluasiLulusan::find($id);
@@ -502,4 +503,66 @@ class MahasiswaController extends Controller
         $data->delete();
         return redirect()->route('evaluasi.lulusan.view');
     }
+
+    #ALUMNI SECTION
+
+    public function alumniView()
+    {
+        $datas = Alumni::all();
+        return view('pages.mahasiswa.adminAlumniView')->withDatas($datas);
+    }
+
+    public function alumniForm()
+    {
+        return view('pages.mahasiswa.adminAlumniForm');
+    }
+
+    public function storeAlumni(Request $request)
+    {
+        $this->validate($request,array(
+            'nama'          => 'required|max:255',
+            'judulTesis'    => 'required|max:255',
+            'tahun'         => 'required|numeric',
+            'instansiKerja' => 'required|max:255',
+        ));
+        $data = new Alumni();
+        $data->nama = $request->nama;
+        $data->judul_tesis = $request->judulTesis;
+        $data->tahun_lulus = $request->tahun;
+        $data->instansi_kerja_terakhir = $request->instansiKerja;
+        $data->save();
+        //return "berhasil";
+        return redirect()->route('admin.alumni.view');
+    }
+
+    public function alumniFormUpdate($id)
+    {
+        $data = Alumni::find($id);
+        return view('pages.mahasiswa.adminAlumniUpdate')->withData($data);
+    }
+
+    public function alumniUpdate(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'nama'          => 'required|max:255',
+            'judulTesis'    => 'required|max:255',
+            'tahun'         => 'required|numeric',
+            'instansiKerja' => 'required|max:255',
+        ));
+        $data = Alumni::find($id);
+        $data->nama = $request->nama;
+        $data->judul_tesis = $request->judulTesis;
+        $data->tahun_lulus = $request->tahun;
+        $data->instansi_kerja_terakhir = $request->instansiKerja;
+        $data->save();
+        return redirect()->route('admin.alumni.view');
+    }
+
+    public function alumniDelete($id)
+    {
+        $data = Alumni::find($id);
+        $data->delete();
+        return redirect()->route('admin.alumni.view');
+    }
+
 }

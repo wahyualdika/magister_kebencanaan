@@ -9,22 +9,17 @@
                 <h5 class="card-title mb-4">Penelitian Tesis</h5>
                 <table class="table table-hover">
                     <tbody>
-                    <th>No</th>
-                    <th>Nama Dosen Pembimbing Tesis</th>
-                    <th>Pendidikan Tertinggi</th>
-                    <th>Jabatan Akademik</th>
-                    <th style="text-align: center"> Banyaknya Mahasiswa Yang Dibimbing dan Status Pembimbing
-                        <table class="milestone-table">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Ketua</td>
-                                <td></td>
-                                <td></td>
-                                <td>Anggota</td>
-                            </tr>
-                        </table>
-                    </th>
+                    <tr>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">Nama Dosen Pembimbing Tesis</th>
+                        <th rowspan="2">Pendidikan Tertinggi</th>
+                        <th rowspan="2">Jabatan Akademik</th>
+                        <th style="text-align: center" colspan="2"> Banyaknya Mahasiswa Yang Dibimbing dan Status Pembimbing</th>
+                    </tr>
+                    <tr>
+                        <th>Ketua</th>
+                        <th>Anggota</th>
+                    </tr>
                     <!-- Data -->
                     @php($k=1)
                     @php($kt = 0)
@@ -33,27 +28,20 @@
                         <tr>
                             <td>{{ $k }}</td>
                             <td>{{ $bimbingan->dosen->nama}}</td>
-                            <td>{{ $bimbingan->pendidikan_tertinggi}}</td>
-                            <td>{{ $bimbingan->jabatan_akademik }}</td>
+                            <td>S{{ $bimbingan->pendidikan_tertinggi}}</td>
+                            <td>{{ $bimbingan->jabatan->nama }}</td>
                             <td>
-                                <table class="milestone-table">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $bimbingan->pembimbing_sbg_ketua }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $bimbingan->pembimbing_sbg_anggota }}</td>
-                                    </tr>
-                                </table>
-                            </td>
+                            <td>{{ $bimbingan->pembimbing_sbg_ketua }}</td>
+                            <td>{{ $bimbingan->pembimbing_sbg_anggota }}</td>
                         </tr>
                         @php($k++)
                         @php($kt += $bimbingan->pembimbing_sbg_ketua)
                         @php($ag += $bimbingan->pembimbing_sbg_anggota)
                     @endforeach
+                    </tbody>
+                </table>
+                <table>
+                    <tbody>
                     <tr>
                         <td colspan="2" style="text-align: center">Total</td>
                         <td>Total Dosen S3 : {{$s3}} </td>

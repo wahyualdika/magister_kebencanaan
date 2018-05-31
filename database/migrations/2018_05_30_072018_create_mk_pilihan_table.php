@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStrukturKurikulumTable extends Migration
+class CreateMkPilihanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateStrukturKurikulumTable extends Migration
      */
     public function up()
     {
-        Schema::create('struktur_kurikulum', function (Blueprint $table) {
+        Schema::create('mk_pilihan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('semester');
-            $table->string('kode_mk');
             $table->string('nama_mk');
+            $table->string('kode_mk');
+            $table->string('semester');
             $table->string('bobot_sks');
-            $table->string('sks_dlm_kurikulum');
-            $table->string('bobot_tugas');
             $table->string('unit_penyelenggara');
             $table->timestamps();
         });
@@ -33,6 +31,6 @@ class CreateStrukturKurikulumTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('struktur_kurikulum');
+        Schema::dropIfExists('mk_pilihan');
     }
 }

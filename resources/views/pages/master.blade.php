@@ -9,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Optional theme -->
     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
-
     <link rel="stylesheet" href="{!! URL::asset('/node_modules/font-awesome/css/font-awesome.min.css') !!}" />
     <link rel="stylesheet" href="{!! URL::asset('/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css') !!}" />
     <link rel="stylesheet" href="{!! URL::asset('/node_modules/flag-icon-css/css/flag-icon.min.css') !!}" />
@@ -87,7 +86,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-dosen" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Dosen<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Form Dosen<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-dosen">
                             <ul class="nav flex-column sub-menu">
@@ -98,27 +97,27 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.dosen.inputForm')}}">
-                                        Masukkan Data
+                                        Data Dosen
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.dosen.prestasi')}}">
-                                        Prestasi Dosen
+                                        Data Prestasi Dosen
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.dosen.pengalaman')}}">
-                                        Pengalaman Dosen
+                                        Data Pengalaman Dosen
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.dosen.seminar')}}">
-                                        Kegiatan Seminar
+                                        Data Kegiatan Seminar
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.dosen.aktivitas')}}">
-                                        Aktifitas Dosen
+                                        Data Aktifitas Dosen
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -144,6 +143,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.mahasiswa.form')}}">
                                         Data Mahasiswa
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.alumni.form')}}">
+                                        Data Alumni
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -192,7 +196,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-penelitian" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Penelitian<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Form Penelitian<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-penelitian">
                             <ul class="nav flex-column sub-menu">
@@ -213,12 +217,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.penelitian.inputForm')}}">
-                                        Masukkan Penelitian
+                                        Data Penelitian
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.penelitian.inputBimbingan')}}">
-                                        Masukkan Bimbingan
+                                        Data Bimbingan
                                     </a>
                                 </li>
                             </ul>
@@ -244,6 +248,36 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.publikasi.inputForm')}}">
                                         Masukkan Publikasi
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-kurikulum" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Kurikulum<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-kurikulum">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mataKuliah.daftarTampil.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mataKuliah.struktur.form')}}">
+                                        Form MK
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mataKuliah.pilihan.form')}}">
+                                        Form MK Pilihan
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('mataKuliah.sksMinimal.form')}}">
+                                        Form SKS minimal PS
                                     </a>
                                 </li>
                             </ul>
