@@ -181,12 +181,12 @@
                         <div class="collapse" id="drop-staff">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.staff.view')}}">
                                         Lihat Daftar
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('admin.staff.form')}}">
                                         Masukkan Data
                                     </a>
                                 </li>
@@ -283,6 +283,88 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-tenaga-ahli" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Tenaga Ahli<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-tenaga-ahli">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('tenagaAhli.kegiatan.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('tenagaAhli.kegiatan.form')}}">
+                                        Form Tenaga Ahli
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-pengabdian" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Pengabdian Masyarakat<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-pengabdian">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.pengabdian.daftarTampil')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.pengabdian.form')}}">
+                                        Form Pengabdian
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-ruang-kerja" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Ruang Kerja<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-ruang-kerja">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.ruangKerja.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.ruangKerja.form')}}">
+                                        Form Ruang Kerja
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-pustaka" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Pustaka<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-pustaka">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.pustaka.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.pustaka.form')}}">
+                                        Form Pustaka
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                 </ul>
             </nav>
 

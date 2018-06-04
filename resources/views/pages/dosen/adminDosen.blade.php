@@ -9,7 +9,6 @@
             <h5 class="card-title mb-4">List Dosen</h5>
             <table class="table table-hover">
                 <tbody>
-                    <th style="text-align: center">Aksi</th>
                     <th>Nama</th>
                     <th>NIDN</th>
                     <th>Tanggal Lahir</th>
@@ -43,21 +42,11 @@
                         </tr>
                     </table>
                 </th>
+                <th style="text-align: center">Aksi</th>
                     <!-- Data -->
                 @foreach($datas as $data)
                 <tbody>
                 <tr>
-                    <form class="forms-sample" action="{!! url('dosen/delete/'.$data->id) !!}"  method="post">
-                        {{ csrf_field() }}
-                        <td>
-                            <div class="btn-group">
-                            <a href="{!! url('dosen/'.$data->id.'/edit') !!}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
-                            <a href="#" class="btn btn-default" style="margin: 0px"><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
-                            <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
-                            </div>
-                        </td>
-                    </form>
-
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->nidn}}</td>
                     <td>{{ $data->tanggal_lahir }}</td>
@@ -103,6 +92,15 @@
                             </tr>
                         </table>
                     </td>
+                    <form class="forms-sample" action="{!! url('dosen/delete/'.$data->id) !!}"  method="post">
+                        {{ csrf_field() }}
+                        <td>
+                            <div class="btn-group">
+                                <a href="{!! url('dosen/'.$data->id.'/edit') !!}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
+                                <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
+                            </div>
+                        </td>
+                    </form>
                 </tr>
                 </tbody>
                 @endforeach

@@ -10,10 +10,10 @@
 
                 <table class="table table-hover">
                     <tr>
-                        <th rowspan="2" style="text-align: center">Aksi</th>
                         <th rowspan="2" style="text-align: center">Jenis Kemampuan</th>
                         <th colspan="4" style="text-align: center">Tanggapan Pihak Pengguna(%)</th>
                         <th rowspan="2">Pemanfaatan Hasil Pelacakan</th>
+                        <th rowspan="2" style="text-align: center">Aksi</th>
                     </tr>
                     <tr>
                         <th style="text-align: center">Sangat Baik</th>
@@ -24,6 +24,12 @@
                     </tr>
                     @foreach($datas as $data)
                         <tr>
+                            <td>{!! $data->jenisKemampuan->jenis_kemampuan !!}</td>
+                            <td>{!! $data->sangat_baik !!}</td>
+                            <td>{!! $data->baik !!}</td>
+                            <td>{!! $data->cukup !!}</td>
+                            <td>{!! $data->kurang !!}</td>
+                            <td>{!! $data->pelacakan !!}</td>
                             <td>
                                 <form class="forms-sample" action="{{route('evaluasi.lulusan.delete',['id'=>$data->id])}}"  method="post">
                                     {{ csrf_field() }}
@@ -33,12 +39,6 @@
                                     </div>
                                 </form>
                             </td>
-                            <td>{!! $data->jenisKemampuan->jenis_kemampuan !!}</td>
-                            <td>{!! $data->sangat_baik !!}</td>
-                            <td>{!! $data->baik !!}</td>
-                            <td>{!! $data->cukup !!}</td>
-                            <td>{!! $data->kurang !!}</td>
-                            <td>{!! $data->pelacakan !!}</td>
                         </tr>
                     @endforeach
                 </table>

@@ -419,7 +419,7 @@ class MahasiswaController extends Controller
         ));
 
         $id = EvaluasiLulusan::where('jenis_kemampuan_id',$request->jenisKemampuan)->get(['id'])->toArray();
-        if(isset($id))
+        if($id != null)
         {
             $x = EvaluasiLulusan::find($id[0]["id"]);
             $x->jenis_kemampuan_id = $request->jenisKemampuan;

@@ -12,4 +12,9 @@ class SumberDana extends Model
     {
         return $this->hasMany('App\Penelitian');
     }
+
+    public function pengabdian()
+    {
+        return $this->hasMany('App\PengabdianMasyarakat');
+    }
 }

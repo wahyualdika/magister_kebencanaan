@@ -185,6 +185,53 @@ Route::prefix('mata_kuliah')->group(function(){
     Route::get('/struktur_kurikulum/sks_minimal/form','KurikulumController@sksMinimalForm')->name('mataKuliah.sksMinimal.form');
     Route::post('/struktur_kurikulum/sks_minimal/store','KurikulumController@storeSKSMinimal')->name('mataKuliah.sksMinimal.store');
     Route::get('/struktur_kurikulum/sks_minimal/update/{id}/edit','KurikulumController@sksMinimalFormUpdate')->name('mataKuliah.sksMinimal.formUpdate');
-    Route::get('/struktur_kurikulum/sks_minimal/update/{id}','KurikulumController@sksMinimalUpdate')->name('mataKuliah.sksMinimal.update');
+    Route::post('/struktur_kurikulum/sks_minimal/update/{id}','KurikulumController@sksMinimalUpdate')->name('mataKuliah.sksMinimal.update');
     Route::post('/struktur_kurikulum/sks_minimal/delete/{id}','KurikulumController@sksMinimalDelete')->name('mataKuliah.sksMinimal.delete');
+});
+
+Route::prefix('staff')->group(function(){
+    Route::get('/view','StaffController@staffView')->name('admin.staff.view');
+    Route::get('/form','StaffController@staffForm')->name('admin.staff.form');
+    Route::post('/store','StaffController@staffStore')->name('admin.staff.store');
+    Route::get('/staff/update/{id}/edit','StaffController@staffFormUpdate')->name('admin.staff.formUpdate');
+    Route::post('/staff/update/{id}','StaffController@staffUpdate')->name('admin.staff.update');
+    Route::post('/staff/delete/{id}','StaffController@staffDelete')->name('admin.staff.delete');
+});
+
+Route::prefix('tenaga_ahli')->group(function(){
+    Route::get('/kegiatan/view','TenagaAhliController@tenagaAhliView')->name('tenagaAhli.kegiatan.view');
+    Route::get('/kegiatan/form','TenagaAhliController@tenagaAhliForm')->name('tenagaAhli.kegiatan.form');
+    Route::post('/kegiatan/store','TenagaAhliController@tenagaAhliStore')->name('tenagaAhli.kegiatan.store');
+    Route::get('/kegiatan/update/{id}/edit','TenagaAhliController@tenagaAhliFormUpdate')->name('tenagaAhli.kegiatan.formUpdate');
+    Route::post('/kegiatan/update/{id}','TenagaAhliController@tenagaAhliUpdate')->name('tenagaAhli.kegiatan.update');
+    Route::post('/kegiatan/delete/{id}','TenagaAhliController@tenagaAhliDelete')->name('tenagaAhli.kegiatan.delete');
+});
+
+Route::prefix('pengabdian_masyarakat')->group(function(){
+    Route::get('/daftarTampil/view','PengabdianMasyarakatController@daftarTampil')->name('admin.pengabdian.daftarTampil');
+    Route::get('/listJumlah/view','PengabdianMasyarakatController@pengabdianListJumlahView')->name('admin.pengabdianJumah.view');
+    Route::get('/view','PengabdianMasyarakatController@pengabdianView')->name('admin.pengabdian.view');
+    Route::get('/form','PengabdianMasyarakatController@pengabdianForm')->name('admin.pengabdian.form');
+    Route::post('/store','PengabdianMasyarakatController@pengabdianStore')->name('admin.pengabdian.store');
+    Route::get('/update/{id}/edit','PengabdianMasyarakatController@pengabdianFormUpdate')->name('admin.pengabdian.formUpdate');
+    Route::post('/update/{id}','PengabdianMasyarakatController@pengabdianUpdate')->name('admin.pengabdian.update');
+    Route::post('/delete/{id}','PengabdianMasyarakatController@pengabdianDelete')->name('admin.pengabdian.delete');
+});
+
+Route::prefix('ruang_kerja')->group(function(){
+    Route::get('/view','RuangKerjaController@ruangKerjaView')->name('admin.ruangKerja.view');
+    Route::get('/form','RuangKerjaController@ruangKerjaForm')->name('admin.ruangKerja.form');
+    Route::post('/store','RuangKerjaController@ruangKerjaStore')->name('admin.ruangKerja.store');
+    Route::get('/update/{id}/edit','RuangKerjaController@ruangKerjaFormUpdate')->name('admin.ruangKerja.formUpdate');
+    Route::post('/update/{id}','RuangKerjaController@ruangKerjaUpdate')->name('admin.ruangKerja.update');
+    Route::post('/delete/{id}','RuangKerjaController@ruangKerjaDelete')->name('admin.ruangKerja.delete');
+});
+
+Route::prefix('pustaka')->group(function(){
+    Route::get('/view','PustakaController@pustakaView')->name('admin.pustaka.view');
+    Route::get('/form','PustakaController@pustakaForm')->name('admin.pustaka.form');
+    Route::post('/store','PustakaController@pustakaStore')->name('admin.pustaka.store');
+    Route::get('/update/{id}/edit','PustakaController@pustakaFormUpdate')->name('admin.pustaka.formUpdate');
+    Route::post('/update/{id}','PustakaController@pustakaUpdate')->name('admin.pustaka.update');
+    Route::post('/delete/{id}','PustakaController@pustakaDelete')->name('admin.pustaka.delete');
 });

@@ -75,7 +75,6 @@
                                     <input type="text" class="form-control p-input" name="keahlians2" id="S2" placeholder="Bidang Keahlian">
                                 </div>
                             </div>
-                            <div class="form-group"><label for="exampleS1">Status dan Sertifikasi</label>
                                 <div class="form-group"><label for="exampleS1">Status Dosen</label>
                                     <select class="select2-multi form-control" name="status">
                                         <option value="1">Tetap</option>
@@ -88,7 +87,6 @@
                                         <option value="0">Tidak</option>
                                     </select>
                                 </div>
-                            </div>
                             <div class="form-group"><label for="exampleS1">Data S3</label>
                                 <div class="form-group">
                                     <label for="exampleNIP">Gelar Akedemik S3</label>

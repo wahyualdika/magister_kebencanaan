@@ -187,12 +187,12 @@ class PenelitianController extends Controller
     public function penelitianDosenTetap()
     {
         $danas = SumberDana::all();
-        $time = new \DateTime('now');
-        $newtime= $time->modify('-0 year' )->format('Y');
+        $time  = new \DateTime('now');
+        $newtime  = $time->modify('-0 year' )->format('Y');
         $newtime1 = $time->modify('-1 year')->format('Y');
         $newtime2 = $time->modify('-1 year')->format('Y');
         $i=1;
-        $biaya=array();
+        $biaya  = array();
         $jumlah = array();
 
        for ($k = 0;$k<5; $k++) {
