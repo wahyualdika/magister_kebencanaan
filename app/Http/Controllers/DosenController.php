@@ -18,6 +18,12 @@ use DateTime;
 
 class DosenController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function viewDosen()
     {
         $datas = Dosen::all();
@@ -39,7 +45,7 @@ class DosenController extends Controller
     {
 
         $this->validate($request,array(
-            'nama' => 'required|max:255',
+            'nama'  => 'required|max:255',
             'nidn'  => 'required|max:255',
         ));
 

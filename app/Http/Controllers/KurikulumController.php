@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class KurikulumController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function daftarTampil()
     {
         return view('pages.kurikulum.daftarTampil');

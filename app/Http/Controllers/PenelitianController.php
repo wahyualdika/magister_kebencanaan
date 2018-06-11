@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class PenelitianController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
     public function daftarView()
     {
         return view('pages.penelitian.daftarTampil');
@@ -187,6 +193,7 @@ class PenelitianController extends Controller
     public function penelitianDosenTetap()
     {
         $danas = SumberDana::all();
+        $limit = SumberDana::count();
         $time  = new \DateTime('now');
         $newtime  = $time->modify('-0 year' )->format('Y');
         $newtime1 = $time->modify('-1 year')->format('Y');
@@ -195,7 +202,7 @@ class PenelitianController extends Controller
         $biaya  = array();
         $jumlah = array();
 
-       for ($k = 0;$k<5; $k++) {
+       for ($k = 0;$k < $limit; $k++) {
                $ts  = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime)->count();
                $ts1 = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime1)->count();
                $ts2 = Penelitian::where('sumber_dana_id','=',$i)->where('tahun_penelitian','=',$newtime2)->count();

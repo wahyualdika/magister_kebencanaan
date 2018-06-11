@@ -42,18 +42,12 @@
                 </li>
                 <li class="nav-item">
                         <div>
-                           {{-- @if(Auth::guard('admin')->check())
-                                <form class="form-horizontal" method="POST" action="{{ route('admin.logout') }}">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">Logout</button>
-                                </form>
-                            @endif
                             @if(Auth::guard('web')->check())
                                     <form class="form-horizontal" method="POST" action="{{ route('logout') }}">
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-primary">Logout</button>
                                     </form>
-                             @endif--}}
+                             @endif
                         </div>
                 </li>
             </ul>
@@ -72,13 +66,13 @@
             <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
                     <img src={!! URL::asset("images/face.jpg")!!} alt="">
-                   {{-- <p class="name">{{Auth::user()->name}}</p>
-                    <p class="designation">{{Auth::user()->email}}</p>--}}
+                   <p class="name">{{Auth::user()->name}}</p>
+                    <p class="designation">{{Auth::user()->email}}</p>
                     <span class="online"></span>
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('home')}}">
                             <img src={!! URL::asset("images/icons/1.png")!!} alt="">
                             <span class="menu-title">Dashbord</span>
                         </a>
@@ -86,7 +80,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-dosen" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Form Dosen<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Dosen<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-dosen">
                             <ul class="nav flex-column sub-menu">
@@ -131,7 +125,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-mahasiswa" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Form Mahasiswa<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Mahasiswa<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-mahasiswa">
                             <ul class="nav flex-column sub-menu">
@@ -196,7 +190,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#drop-penelitian" aria-expanded="false" aria-controls="sample-pages">
                             <img src={!! URL::asset("images/icons/9.png")!!} alt="">
-                            <span class="menu-title">Form Penelitian<i class="fa fa-sort-down"></i></span>
+                            <span class="menu-title">Penelitian<i class="fa fa-sort-down"></i></span>
                         </a>
                         <div class="collapse" id="drop-penelitian">
                             <ul class="nav flex-column sub-menu">
@@ -359,6 +353,48 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.pustaka.form')}}">
                                         Form Pustaka
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-akses" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Aksesibilitas Data<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-akses">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.aksesibilitasData.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.aksesibilitasData.form')}}">
+                                        Form Aksesibilitas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#drop-alokasi" aria-expanded="false" aria-controls="sample-pages">
+                            <img src={!! URL::asset("images/icons/9.png")!!} alt="">
+                            <span class="menu-title">Alokasi Dana<i class="fa fa-sort-down"></i></span>
+                        </a>
+                        <div class="collapse" id="drop-alokasi">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.alokasiDana.view')}}">
+                                        Lihat Daftar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.alokasiDana.form')}}">
+                                        Form Alokasi Dana
                                     </a>
                                 </li>
                             </ul>

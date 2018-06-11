@@ -17,6 +17,12 @@ use function Symfony\Component\VarDumper\Tests\Caster\reflectionParameterFixture
 
 class MahasiswaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function daftarView()
     {
         return view('pages.mahasiswa.daftarTampil');
@@ -348,10 +354,14 @@ class MahasiswaController extends Controller
 
     public function storeDanaMhs(Request $request)
     {
+      $existTahun = MahasiswaDanDana::where('tahun_akademik','=',$request->tahunAkademik)->exists();
+      if($existTahun){
+          return redirect()->route('mahasiswa.dana.view')->with('status', 'Tahun akademik sudah ada!');
+      }
         $this->validate($request,array(
-            'tahunAkademik' => 'required|numeric',
+            'tahunAkademik'   => 'required|numeric',
             'jumlahMahasiswa' => 'required|numeric',
-            'jumlahDana' => 'required|numeric',
+            'jumlahDana'      => 'required|numeric',
         ));
 
         $data = new MahasiswaDanDana();
@@ -462,7 +472,7 @@ class MahasiswaController extends Controller
 
     public function formUpdateEvaLulusan($id)
     {
-        $data = EvaluasiLulusan::find($id);
+        $data      = EvaluasiLulusan::find($id);
         $lanjutans = EvaluasiLanjutan::find(1);
         return view('pages.mahasiswa.evaluasiLulusanFormUpdate')->withData($data)->withLanjutans($lanjutans);
     }

@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class PengabdianMasyarakatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function daftarTampil()
     {
@@ -85,6 +89,7 @@ class PengabdianMasyarakatController extends Controller
     public function pengabdianListJumlahView()
     {
         $danas = SumberDana::all();
+        $limit = SumberDana::count();
         $time  = new \DateTime('now');
         $newtime  = $time->modify('-0 year' )->format('Y');
         $newtime1 = $time->modify('-1 year')->format('Y');
@@ -93,7 +98,7 @@ class PengabdianMasyarakatController extends Controller
         $biaya  = array();
         $jumlah = array();
 
-        for ($k = 0;$k<5; $k++) {
+        for ($k = 0;$k < $limit; $k++) {
             $ts  = PengabdianMasyarakat::where('sumber_dana_id','=',$i)->where('tahun','=',$newtime)->count();
             $ts1 = PengabdianMasyarakat::where('sumber_dana_id','=',$i)->where('tahun','=',$newtime1)->count();
             $ts2 = PengabdianMasyarakat::where('sumber_dana_id','=',$i)->where('tahun','=',$newtime2)->count();

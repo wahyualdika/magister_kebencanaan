@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::prefix('dosen')->group(function(){
@@ -235,3 +235,25 @@ Route::prefix('pustaka')->group(function(){
     Route::post('/update/{id}','PustakaController@pustakaUpdate')->name('admin.pustaka.update');
     Route::post('/delete/{id}','PustakaController@pustakaDelete')->name('admin.pustaka.delete');
 });
+
+Route::prefix('aksesibilitas_data')->group(function(){
+    Route::get('/view','AksesibilitasDataController@aksesibilitasDataView')->name('admin.aksesibilitasData.view');
+    Route::get('/form','AksesibilitasDataController@aksesibilitasDataForm')->name('admin.aksesibilitasData.form');
+    Route::post('/store','AksesibilitasDataController@aksesibilitasDataStore')->name('admin.aksesibilitasData.store');
+    Route::get('/update/{id}/edit','AksesibilitasDataController@aksesibilitasDataFormUpdate')->name('admin.aksesibilitasData.formUpdate');
+    Route::post('/update/{id}','AksesibilitasDataController@aksesibilitasDataUpdate')->name('admin.aksesibilitasData.update');
+    Route::post('/delete/{id}','AksesibilitasDataController@aksesibilitasDataDelete')->name('admin.aksesibilitasData.delete');
+});
+
+Route::prefix('alokasi_dana')->group(function(){
+    Route::get('/view','AlokasiDanaController@alokasiDanaView')->name('admin.alokasiDana.view');
+    Route::get('/form','AlokasiDanaController@alokasiDanaForm')->name('admin.alokasiDana.form');
+    Route::post('/store','AlokasiDanaController@alokasiDanaStore')->name('admin.alokasiDana.store');
+    Route::get('/update/{id}/edit','AlokasiDanaController@alokasiDanaFormUpdate')->name('admin.alokasiDana.formUpdate');
+    Route::post('/update/{id}','AlokasiDanaController@alokasiDanaUpdate')->name('admin.alokasiDana.update');
+    Route::post('/delete/{id}','AlokasiDanaController@alokasiDanaDelete')->name('admin.alokasiDana.delete');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -17,4 +17,9 @@ class SumberDana extends Model
     {
         return $this->hasMany('App\PengabdianMasyarakat');
     }
+
+    public function alokasi()
+    {
+      return $this->hasMany('App\AlokasiDana', 'sumber_dana_id');
+    }
 }

@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class PublikasiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function daftarView()
     {
         return view('pages.publikasi.daftarTampil');
