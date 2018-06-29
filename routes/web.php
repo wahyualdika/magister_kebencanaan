@@ -67,6 +67,9 @@ Route::prefix('dosen')->group(function(){
     Route::get('/tugas-belajar/{id}/edit','DosenController@tugasBelajarUpdateForm')->name('admin.dosen.tugasBelajarUpdateForm');
     Route::post('/tugas-belajar/update/{id}','DosenController@tugasBelajarUpdate')->name('admin.dosen.tugasBelajarUpdate');
     Route::post('/tugas-belajar/delete/{id}','DosenController@tugasBelajarDelete')->name('admin.dosen.tugasBelajarDelete');
+
+    //Pencarian Dosen
+    Route::post('/cari/dosen','DosenController@cariDosen')->name('admin.dosen.cari');
 });
 
 Route::prefix('publikasi')->group(function(){
@@ -253,6 +256,7 @@ Route::prefix('alokasi_dana')->group(function(){
     Route::post('/update/{id}','AlokasiDanaController@alokasiDanaUpdate')->name('admin.alokasiDana.update');
     Route::post('/delete/{id}','AlokasiDanaController@alokasiDanaDelete')->name('admin.alokasiDana.delete');
 });
+
 
 Auth::routes();
 

@@ -30,19 +30,19 @@
                         </div>
                         <div class="form-group">
                             <label >SKS PS Sendiri</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_ps_sendiri}}" name="pengajaranPsSendiri" placeholder="SKS PS Sendiri">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_ps_sendiri}}" name="pengajaranPsSendiri" placeholder="SKS PS Sendiri">
                         </div>
                         <div class="form-group">
                             <label>SKS PS Lain, PT Sendiri</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_ps_lain}}" name="pengajaranPsLain" placeholder="SKS PS Lain">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_ps_lain}}" name="pengajaranPsLain" placeholder="SKS PS Lain">
                         </div>
                         <div class="form-group">
                             <label>SKS PS Lain, PT Sendiri</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_ps_ptLain}}" name="pengajaranPtLain" placeholder="SKS PS Lain">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_ps_ptLain}}" name="pengajaranPtLain" placeholder="SKS PS Lain">
                         </div>
                         <div class="form-group">
                             <label>SKS Penelitian Dosen</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_penelitian}}" name="sksPenelitian" placeholder="SKS Penelitian">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_penelitian}}" name="sksPenelitian" placeholder="SKS Penelitian">
                         </div>
                         <div class="form-group">
                             <label>SKS Pengabdian Dosen</label>
@@ -50,11 +50,11 @@
                         </div>
                         <div class="form-group">
                             <label>SKS Manajemen PT Sendiri</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_manajemen_ptSendiri}}" name="manajemenPtSendiri" placeholder="Manajemene PT Sendiri">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_manajemen_ptSendiri}}" name="manajemenPtSendiri" placeholder="Manajemene PT Sendiri">
                         </div>
                         <div class="form-group">
                             <label>SKS Manajemen PT Lain</label>
-                            <input type="text" class="form-control p-input" value="{{$data->sks_manajemen_ptLain}}" name="manajemenPtLain" placeholder="Manajemene PT Lain">
+                            <input type="number" class="form-control p-input" value="{{$data->sks_manajemen_ptLain}}" name="manajemenPtLain" placeholder="Manajemene PT Lain">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim</button>

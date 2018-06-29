@@ -1,0 +1,9 @@
+def deter(value = 30)
+    if value is 25:
+        print(25)
+    elif value is 12:
+        print(12)
+    else
+        print(30)
+
+deter()

@@ -9,15 +9,19 @@
                 <h5 class="card-title mb-4">List Alumni</h5>
                 <table class="table table-hover">
                     <tbody>
-                    <th style="text-align: center">Aksi</th>
                     <th>Nama</th>
                     <th>Tahun Lulus</th>
                     <th>Judul Tesis</th>
                     <th>Instansi Kerja Terakhir</th>
+                    <th style="text-align: center">Aksi</th>
                     <!-- Data -->
                     @foreach($datas as $data)
                         <tbody>
                         <tr>
+                            <td>{{ $data->nama }}</td>
+                            <td>{{ $data->tahun_lulus }}</td>
+                            <td>{{ $data->judul_tesis }}</td>
+                            <td>{{ $data->instansi_kerja_terakhir }}</td>
                             <form class="forms-sample" action="{{route('admin.alumni.delete',['id'=>$data->id])}}"  method="post">
                                 {{ csrf_field() }}
                                 <td style="text-align: center">
@@ -27,10 +31,6 @@
                                     </div>
                                 </td>
                             </form>
-                            <td>{{ $data->nama }}</td>
-                            <td>{{ $data->tahun_lulus }}</td>
-                            <td>{{ $data->judul_tesis }}</td>
-                            <td>{{ $data->instansi_kerja_terakhir }}</td>
                         @endforeach
                         </tbody>
                 </table>
@@ -38,5 +38,3 @@
         </div>
     </div>
 @endsection
-
-

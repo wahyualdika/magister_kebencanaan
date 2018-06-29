@@ -23,17 +23,17 @@
 
 @section('side-content')
 
-    <h3 class="page-heading mb-4">Form Struktur Kurikulum</h3>
+    <h3 class="page-heading mb-4">Form Staff</h3>
     <div class="row mb-5">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-4">Data Struktur Kurikulum</h5>
+                    <h5 class="card-title mb-4">Data Struktur Staff</h5>
                     <form class="forms-sample" action="{{route('admin.staff.store')}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleS1">Jenis Staff</label>
-                            <select class="form-control" name="jenisStaff" id="JenisStaff">
+                            <select class="form-control" name="jenisStaff" id="JenisStaff" required>
                                 @foreach($jenisstaffs as $jenisstaff)
                                     <option value="{{$jenisstaff->id}}">{{$jenisstaff->jenis}}</option>
                                     @endforeach

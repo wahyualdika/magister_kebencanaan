@@ -14,7 +14,7 @@
 
 @section('side-content')
 
-    <h3 class="page-heading mb-4">Form Input Dosen</h3>
+    <h3 class="page-heading mb-4">Form Input Aktifitas Dosen</h3>
     <div class="row mb-5">
         <div class="col-lg-12">
             <div class="card">
@@ -33,31 +33,31 @@
                         </div>
                         <div class="form-group">
                             <label >SKS PS Sendiri</label>
-                            <input type="text" class="form-control p-input" name="pengajaranPsSendiri" placeholder="SKS PS Sendiri">
+                            <input type="number" class="form-control p-input" name="pengajaranPsSendiri" placeholder="SKS PS Sendiri">
                         </div>
                         <div class="form-group">
                             <label>SKS PS Lain, PT Sendiri</label>
-                            <input type="text" class="form-control p-input" name="pengajaranPsLain" placeholder="SKS PS Lain">
+                            <input type="number" class="form-control p-input" name="pengajaranPsLain" placeholder="SKS PS Lain">
                         </div>
                         <div class="form-group">
                             <label>SKS PS Lain, PT Sendiri</label>
-                            <input type="text" class="form-control p-input" name="pengajaranPtLain" placeholder="SKS PS Lain">
+                            <input type="number" class="form-control p-input" name="pengajaranPtLain" placeholder="SKS PS Lain">
                         </div>
                         <div class="form-group">
                             <label>SKS Penelitian Dosen</label>
-                            <input type="text" class="form-control p-input" name="sksPenelitian" placeholder="SKS Penelitian">
+                            <input type="number" class="form-control p-input" name="sksPenelitian" placeholder="SKS Penelitian">
                         </div>
                         <div class="form-group">
                             <label>SKS Pengabdian Dosen</label>
-                            <input type="text" class="form-control p-input" name="sksPengabdian" placeholder="SKS Pengabdian">
+                            <input type="number" class="form-control p-input" name="sksPengabdian" placeholder="SKS Pengabdian">
                         </div>
                         <div class="form-group">
                             <label>SKS Manajemen PT Sendiri</label>
-                            <input type="text" class="form-control p-input" name="manajemenPtSendiri" placeholder="Manajemene PT Sendiri">
+                            <input type="number" class="form-control p-input" name="manajemenPtSendiri" placeholder="Manajemene PT Sendiri">
                         </div>
                         <div class="form-group">
                             <label>SKS Manajemen PT Lain</label>
-                            <input type="text" class="form-control p-input" name="manajemenPtLain" placeholder="Manajemene PT Lain">
+                            <input type="number" class="form-control p-input" name="manajemenPtLain" placeholder="Manajemene PT Lain">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim</button>

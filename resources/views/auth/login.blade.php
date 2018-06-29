@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center justify-content-between">
                                     <div class="form-check"><label><input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}class="form-check-input">Remember me</label></div>
-                                    <a href="{{ route('password.request') }}" class="forgot-pass">Forgot password</a>
+                                    {{-- <a href="{{ route('password.request') }}" class="forgot-pass">Forgot password</a> --}}
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-block enter-btn">LOG IN</button>
@@ -41,7 +41,7 @@
                                 <!--<p class="Or-login-with my-3">Or login with</p>
                                 <a href="#" class="facebook-login btn btn-facebook btn-block">Sign in with Facebook</a>
                                 <a href="#" class="google-login btn btn-google btn-block">Sign in with Google+</a>-->
-                                <a href="{{ route('register') }}" class="google-login btn btn-create-account btn-block">Create An Account</a>
+                                {{-- <a href="{{ route('register') }}" class="google-login btn btn-create-account btn-block">Create An Account</a> --}}
                             </form>
                         </div>
                     </div>

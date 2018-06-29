@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleNIP">Tahun Mulai</label>
-                            <input type="text" class="form-control p-input" name="tahun" placeholder="Tahun Mulai">
+                            <input type="number" class="form-control p-input" name="tahun" placeholder="Tahun Mulai">
                         </div>
                         <div class="form-group"><label for="exampleS1">Negara</label>
                             <select class="select2-multi form-control" name="negara">

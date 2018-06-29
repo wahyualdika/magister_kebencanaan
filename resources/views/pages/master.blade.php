@@ -31,10 +31,10 @@
             <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3" type="button" data-target="#sidebar" data-toggle="minimize">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form action="#" method="post" class="form-inline mt-2 mt-md-0 d-none d-lg-block">
+            <form action="{{route('admin.dosen.cari')}}" method="post" class="form-inline mt-2 mt-md-0 d-none d-lg-block">
                 {{ csrf_field() }}
-                <input class="form-control mr-sm-2 search" type="text" name="nim" placeholder="Search" id="input">
-                <!--<button id="submit" type="submit">Cari</button>-->
+                <input class="form-control mr-sm-2 search" type="text" name="nama" placeholder="Cari Dosen" id="input">
+                <button id="submit" class="btn btn-primary mr-2" type="submit">Cari</button>
             </form>
             <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
                 <li class="nav-item">

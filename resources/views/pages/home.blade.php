@@ -52,7 +52,7 @@
                 <div class="card card-statistics" id="shakeDosen">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{ route('admin.dosen.daftar') }}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Dosen</p>
                                 </div>
@@ -67,7 +67,7 @@
                 <div class="card card-statistics" id="shakeMahasiswa">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.mahasiswa.daftar')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Mahasiswa</p>
                                 </div>
@@ -82,7 +82,7 @@
                 <div class="card card-statistics" id="shakePenelitian">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.penelitian.daftar')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Penelitian</p>
                                 </div>
@@ -97,7 +97,7 @@
                 <div class="card card-statistics" id="shakePublikasi">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{ route('admin.publikasi.daftar') }}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Publikasi</p>
                                 </div>
@@ -111,7 +111,7 @@
                 <div class="card card-statistics" id="shakeKurikulum">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{ route('mataKuliah.daftarTampil.view') }}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Kurikulum</p>
                                 </div>
@@ -153,7 +153,7 @@
                 <div class="card card-statistics" id="shakePustaka">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{ route('admin.pustaka.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Pustaka</p>
                                 </div>
@@ -167,7 +167,7 @@
                 <div class="card card-statistics" id="shakePengabdian">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.pengabdian.daftarTampil')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Pengabdian Masyarakat</p>
                                 </div>
@@ -181,7 +181,7 @@
                 <div class="card card-statistics" id="shakeStaff">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.staff.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Staff</p>
                                 </div>
@@ -195,7 +195,7 @@
                 <div class="card card-statistics" id="shakeRuang">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.ruangKerja.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Ruang Kerja Dosen</p>
                                 </div>
@@ -209,7 +209,7 @@
                 <div class="card card-statistics" id="shakeAhli">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('tenagaAhli.kegiatan.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Tenaga Ahli</p>
                                 </div>

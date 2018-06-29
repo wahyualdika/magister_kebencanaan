@@ -24,6 +24,14 @@ class DosenController extends Controller
         $this->middleware('auth');
     }
 
+    public function cariDosen(Request $request)
+    {
+      $nama  = $request->nama;
+      $datas = Dosen::where('nama', 'like', '%' . $nama . '%')->get();
+      return view('pages.dosen.hasilDosen')->withDatas($datas);
+    }
+
+
     public function viewDosen()
     {
         $datas = Dosen::all();

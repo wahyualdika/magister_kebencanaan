@@ -14,7 +14,7 @@
 
 @section('side-content')
 
-    <h3 class="page-heading mb-4">Form Input Dosen</h3>
+    <h3 class="page-heading mb-4">Form Input Kegiatan Dosen</h3>
     <div class="row mb-5">
         <div class="col-lg-12">
             <div class="card">
