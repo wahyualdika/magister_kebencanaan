@@ -13,11 +13,21 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: "dd/mm/yy"
-            });
-        } );
+    $("#silabusFile").change(function() { // bCheck is a input type button
+          //var silabus = $("#silabusFile").val();
+          $('#silabusCheck').prop('checked', true);
+    });
+
+    $("#sapFile").change(function() { // bCheck is a input type button
+         //var silabus = $("#silabusFile").val();
+         $('#sapCheck').prop('checked', true);
+    });
+
+    $("#deskripsiFile").change(function() { // bCheck is a input type button
+         //var silabus = $("#silabusFile").val();
+         $('#deskripsiCheck').prop('checked', true);
+    });
+
     </script>
 @endsection
 
@@ -64,23 +74,26 @@
                             </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">Kelengkapan MT kuliah</label>
-                            <div class="form-check">
+                            <div class="form-check" id="deskripsiGroup">
                                 <label>
-                                    <input type="checkbox" class="form-check-input" name="deskripsi" value="1">
+                                    <input type="checkbox" class="form-check-input" id="deskripsiCheck" name="deskripsi" value="1" onclick="return false;">
                                    Diskripsi
                                 </label>
+                                <input type="file" id="deskripsiFile" name="fileDeskripsi" class="form-control">
                             </div>
-                            <div class="form-check">
+                            <div class="form-check" id="silabusGroup">
                                 <label>
-                                    <input type="checkbox" class="form-check-input" name="silabus" value="2">
+                                    <input type="checkbox" id="silabusCheck" class="form-check-input" name="silabus" value="2" onclick="return false;">
                                     Silabus
                                 </label>
+                                <input type="file" id="silabusFile" name="fileSilabus" class="form-control">
                             </div>
-                            <div class="form-check">
+                            <div class="form-check" id="sapGroup">
                                 <label>
-                                    <input type="checkbox" class="form-check-input" name="sap" value="3">
+                                    <input type="checkbox" id="sapCheck" class="form-check-input" name="sap" value="3" onclick="return false;">
                                     SAP
                                 </label>
+                                <input type="file" id="sapFile" name="fileSap" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group"><label for="exampleS1">Berikan tanda centang bila MK pilihan</label>
@@ -91,7 +104,6 @@
                                 </label>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim</button>
                         </div>

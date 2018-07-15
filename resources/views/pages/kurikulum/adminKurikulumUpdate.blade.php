@@ -11,6 +11,24 @@
         $(".select2-multi").select2();
         $(".select2-multi-kelengkapan").select2().val({!! json_encode($kurikulum->kelengkapan()->allRelatedIds()) !!}).trigger('change');
     </script>
+
+    <script type="text/javascript">
+    $("#silabusFile").change(function() { // bCheck is a input type button
+          //var silabus = $("#silabusFile").val();
+          $('#silabusCheck').prop('checked', true);
+    });
+
+    $("#sapFile").change(function() { // bCheck is a input type button
+         //var silabus = $("#silabusFile").val();
+         $('#sapCheck').prop('checked', true);
+    });
+
+    $("#deskripsiFile").change(function() { // bCheck is a input type button
+         //var silabus = $("#silabusFile").val();
+         $('#deskripsiCheck').prop('checked', true);
+    });
+
+    </script>
 @endsection
 
 @section('side-content')
@@ -55,7 +73,7 @@
                                 <input type="number" class="form-control p-input" name="institusional" value="{{$kurikulum->institusional}}" id="Institusional" placeholder="Institusional">
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleS1">Kelengkapan</label>
                             <select class="select2-multi-kelengkapan form-control" name="kelengkapan[]" multiple="multiple">
                                 <option value="">Kelengkapan</option>
@@ -63,6 +81,47 @@
                                     <option value="{{ $kelengkapan->id }}">{{ $kelengkapan->nama }}</option>
                                 @endforeach
                             </select>
+                        </div> --}}
+                        <div class="form-group"><label for="exampleS1">Kelengkapan MT kuliah</label>
+                            <div class="form-check" id="deskripsiGroup">
+                              <label>
+                                    @if ($kurikulum->deskripsi_path != null)
+                                        <input type="checkbox" class="form-check-input" id="deskripsiCheck" name="deskripsi" value="1" onclick="return false;" checked>
+                                        Diskripsi
+                                    @else
+                                        <input type="checkbox" class="form-check-input" id="deskripsiCheck" name="deskripsi" value="1" onclick="return false;">
+                                        Diskripsi
+                                    @endif
+                              </label>
+                                    <input type="file" id="deskripsiFile" name="fileDeskripsi" class="form-control">
+                            </div>
+
+                            <div class="form-check" id="silabusGroup">
+                                <label>
+                                      @if ($kurikulum->silabus_path != null)
+                                          <input type="checkbox" class="form-check-input" id="silabusCheck" name="silabus" value="2" onclick="return false;" checked>
+                                          Silabus
+                                      @else
+                                          <input type="checkbox" class="form-check-input" id="silabusCheck" name="silabus" value="2" onclick="return false;">
+                                          Silabus
+                                      @endif
+                                </label>
+                                <input type="file" id="silabusFile" name="fileSilabus" class="form-control">
+                            </div>
+
+
+                            <div class="form-check" id="sapGroup">
+                              <label>
+                                    @if ($kurikulum->sap_path != null)
+                                        <input type="checkbox" class="form-check-input" id="sapCheck" name="sap" value="3" onclick="return false;" checked>
+                                        Silabus
+                                    @else
+                                        <input type="checkbox" class="form-check-input" id="sapCheck" name="sap" value="3" onclick="return false;">
+                                        Silabus
+                                    @endif
+                              </label>
+                                <input type="file" id="sapFile" name="fileSap" class="form-control">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleS1">Status Mata Kuliah: </label>

@@ -25,8 +25,8 @@
                             <td style="text-align: center">{!! $mkpilihan->bobot_sks !!}</td>
                             <td style="text-align: center">{!! $mkpilihan->unit_penyelenggara !!}</td>
                             <td>
-                                <form class="forms-sample" action="{{--{{route('mataKuliah.struktur.delete',['id'=>$kurikulum->id])}}--}}"  method="post">
-                                    {{--{{ csrf_field() }}--}}
+                                <form class="forms-sample" action="{{route('mataKuliah.pilihan.delete',['id'=>$mkpilihan->id])}}"  method="post">
+                                    {{ csrf_field() }}
                                     <div class="btn-group">
                                         <a href="{{route('mataKuliah.pilihan.formUpdate',['id'=>$mkpilihan->id])}}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
                                         <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
@@ -40,5 +40,3 @@
         </div>
     </div>
 @endsection
-
-

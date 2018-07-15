@@ -7,6 +7,7 @@ use App\MataKuliahPilihan;
 use App\SksMinimal;
 use App\StrukturKurikulum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class KurikulumController extends Controller
 {
@@ -55,6 +56,27 @@ class KurikulumController extends Controller
         $data->bobot_tugas        = $request->bobotTugas;
         $data->unit_penyelenggara = $request->penyelenggara;
         $data->isPilihan          = $request->pilihan;
+
+        if($request->hasFile('fileDeskripsi')){
+              $file = $request->file('fileDeskripsi');
+              $filename = time().'_deskripsi.'.$file->getClientOriginalExtension();
+              $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+              $data->deskripsi_path  = 'kelengkapan_mk/'.$filename;
+        }
+
+        if ($request->hasFile('fileSilabus')) {
+            $file = $request->file('fileSilabus');
+            $filename = time().'_silabus.'.$file->getClientOriginalExtension();
+            $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+            $data->silabus_path  = 'kelengkapan_mk/'.$filename;
+        }
+
+        if ($request->hasFile('fileSap')) {
+            $file = $request->file('fileSap');
+            $filename = time().'_sap.'.$file->getClientOriginalExtension();
+            $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+            $data->sap_path  = 'kelengkapan_mk/'.$filename;
+        }
 
         $data->save();
 
@@ -105,25 +127,85 @@ class KurikulumController extends Controller
         $data->bobot_tugas        = $request->bobotTugas;
         $data->unit_penyelenggara = $request->penyelenggara;
         $data->isPilihan          = $request->pilihan;
-        $data->save();
 
-        if(isset($request->kelengkapan))
-        {
-            $data->kelengkapan()->sync($request->kelengkapan);
-        }else{
-            $data->kelengkapan()->sync(array());
+
+        if($request->hasFile('fileDeskripsi')){
+              $file = $request->file('fileDeskripsi');
+              $filename = time().'_deskripsi.'.$file->getClientOriginalExtension();
+              Storage::disk('public')->delete($data->deskripsi_path);
+              $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+              $data->deskripsi_path  = 'kelengkapan_mk/'.$filename;
         }
 
-        //return "berhasil";
+        if ($request->hasFile('fileSilabus')) {
+            $file = $request->file('fileSilabus');
+            $filename = time().'_silabus.'.$file->getClientOriginalExtension();
+            Storage::disk('public')->delete($data->silabus_path);
+            $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+            $data->silabus_path  = 'kelengkapan_mk/'.$filename;
+        }
+
+        if ($request->hasFile('fileSap')) {
+            $file = $request->file('fileSap');
+            $filename = time().'_sap.'.$file->getClientOriginalExtension();
+            Storage::disk('public')->delete($data->sap_path);
+            $file->move(storage_path('public/kelengkapan/kelengkapan_mk'), $filename);
+            $data->sap_path  = 'kelengkapan_mk/'.$filename;
+        }
+
+        $data->save();
+
+        if(isset($request->silabus)){
+            $data->kelengkapan()->sync($request->silabus,false);
+        }
+
+        if(isset($request->sap)){
+            $data->kelengkapan()->sync($request->sap,false);
+        }
+
+        if(isset($request->deskripsi))
+        {
+            $data->kelengkapan()->sync($request->deskripsi,false);
+        }
+
         return redirect()->route('mataKuliah.struktur.view');
     }
 
     public function kurikulumDelete($id)
     {
         $kurikulum = StrukturKurikulum::find($id);
+        $pilihan = MataKuliahPilihan::where('kode_mk',$kurikulum->kode_mk)->first();
         $kurikulum->kelengkapan()->detach();
+        Storage::disk('public')->delete([$kurikulum->deskripsi_path, $kurikulum->silabus_path, $kurikulum->sap_path]);
         $kurikulum->delete();
+        $pilihan->delete();
         return redirect()->route('mataKuliah.struktur.view');
+    }
+
+    public function kurikulumDownloadKelengkapan($id,$name)
+    {
+      $file = StrukturKurikulum::find($id);
+      $name = strtolower($name);
+       if($name == "sap"){
+          $file_path = $file->sap_path;
+          if($exists = Storage::disk('public')->has($file_path)){
+                  return response()->download(storage_path("public/kelengkapan/".$file_path));
+          }
+       }
+
+      elseif ($name == "deskripsi") {
+            $file_path = $file->deskripsi_path;
+            if($exists = Storage::disk('public')->has($file_path)){
+                return response()->download(storage_path("public/kelengkapan/".$file_path));
+          }
+      }
+
+      elseif ($name == "silabus") {
+          $file_path = $file->silabus_path;
+          if($exists = Storage::disk('public')->has($file_path)){
+              return response()->download(storage_path("public/kelengkapan/".$file_path));
+          }
+      }
     }
 
     //MATA KULIAH PILIHAN SECTION

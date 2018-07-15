@@ -172,8 +172,9 @@ Route::prefix('mata_kuliah')->group(function(){
     Route::get('/struktur_kurikulum/update/{id}/edit','KurikulumController@kurikulumFormUpdate')->name('mataKuliah.struktur.formUpdate');
     Route::post('/struktur_kurikulum/update/{id}','KurikulumController@kurikulumUpdate')->name('mataKuliah.struktur.update');
     Route::post('/struktur_kurikulum/delete/{id}','KurikulumController@kurikulumDelete')->name('mataKuliah.struktur.delete');
+    Route::get('/struktur_kurikulum/kelengkapan/download/{id}/{name}','KurikulumController@kurikulumDownloadKelengkapan')->name('mataKuliah.struktur.download');
 
-    //MATA KULIAH SECTION
+    //MATA KULIAH PILIHAN SECTION
     Route::get('/struktur_kurikulum/mk_pilihan/view','KurikulumController@mkPilihanView')->name('mataKuliah.pilihan.view');
     Route::get('/struktur_kurikulum/mk_pilihan/form','KurikulumController@mkPilihanForm')->name('mataKuliah.pilihan.form');
     Route::post('/struktur_kurikulum/mk_pilihan/store','KurikulumController@storeMkPilihan')->name('mataKuliah.pilihan.store');

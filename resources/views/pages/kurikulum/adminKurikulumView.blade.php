@@ -35,7 +35,7 @@
                             <td style="text-align: center">{!! $kurikulum->bobot_tugas !!}</td>
                             <td style="text-align: center">
                                 @foreach($kurikulum->kelengkapan as $kelengkapan)
-                                    <span class="badge badge-success">{!! $kelengkapan->nama !!}</span>
+                                  <a href="{{route('mataKuliah.struktur.download',['id'=>$kurikulum->id,'name'=>$kelengkapan->nama])}}"  <span class="badge badge-success">{!! $kelengkapan->nama !!}</span><a/>
                                 @endforeach
                             </td>
                             <td style="text-align: center">{!! $kurikulum->unit_penyelenggara !!}</td>
@@ -55,5 +55,3 @@
         </div>
     </div>
 @endsection
-
-
