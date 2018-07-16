@@ -125,7 +125,7 @@
                 <div class="card card-statistics" id="shakeData">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.aksesibilitasData.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Aksesibilitas Data</p>
                                 </div>
@@ -139,7 +139,7 @@
                 <div class="card card-statistics" id="shakeDana">
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="#">
+                            <a href="{{route('admin.alokasiDana.view')}}">
                                 <div class="float-left">
                                     <p class="card-text text-dark">Alokasi Dana</p>
                                 </div>

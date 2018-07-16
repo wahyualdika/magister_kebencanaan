@@ -34,7 +34,7 @@ class DosenController extends Controller
 
     public function viewDosen()
     {
-        $datas = Dosen::all();
+        $datas = Dosen::paginate(20);
         return view('pages.dosen.adminDosen')->withDatas($datas);
     }
 
@@ -88,13 +88,13 @@ class DosenController extends Controller
 
     public function viewDosenTidakTetap()
     {
-        $datas = Dosen::where('status',0)->orderBy('nama','desc')->get();
+        $datas = Dosen::where('status',0)->orderBy('nama','desc')->paginate(20);
         return view('pages.dosen.adminDosenTidakTetap')->withDatas($datas);
     }
 
     public function viewDosenTetap()
     {
-        $datas  = Dosen::where('status',1)->orderBy('nama','desc')->get();
+        $datas  = Dosen::where('status',1)->orderBy('nama','desc')->paginate(20);
         $guru   = Dosen::where('jabatan_akademik_id',1)->count();
         $kepala = Dosen::where('jabatan_akademik_id',2)->count();
         $s3     = Dosen::where('gelar_akademik_s3','!=',null)->count();
@@ -168,7 +168,7 @@ class DosenController extends Controller
         $tingkats[0] = $lokal;
         $tingkats[1] = $nasional;
         $tingkats[2] = $internasional;
-        $datas = Prestasi::all();
+        $datas = Prestasi::paginate(20);
         return view('pages.dosen.viewPrestasiDosen')->withDatas($datas)->withTingkats($tingkats);
     }
 
@@ -241,7 +241,7 @@ class DosenController extends Controller
 
         $tingkats[0] = $nasional;
         $tingkats[1] = $internasional;
-        $datas       = Pengalaman::all();
+        $datas       = Pengalaman::paginate(20);
 
         return view('pages.dosen.viewPengalamanDosen')->withDatas($datas)->withTingkats($tingkats);
     }
@@ -262,7 +262,7 @@ class DosenController extends Controller
         $rolearr[0] = $penyaji;
         $rolearr[1] = $peserta;
 
-        $datas      = Seminar::all();
+        $datas      = Seminar::paginate(15);
         return view('pages.dosen.viewSeminarDosen')->withDatas($datas)->withRolearr($rolearr);
     }
 
@@ -371,7 +371,7 @@ class DosenController extends Controller
     public function aktivitasDosenView()
     {
 
-        $datas  = AktivitasDosen::all();
+        $datas  = AktivitasDosen::paginate(15);
         $amount = $datas->count();
         return view('pages.dosen.aktivitasDosenView')->withDatas($datas)->withAmount($amount);
     }
@@ -453,7 +453,7 @@ class DosenController extends Controller
 
     public function tugasBelajarView()
     {
-        $datas = TugasBelajar::all();
+        $datas = TugasBelajar::paginate(15);
         $s3 = TugasBelajar::where('jenjang_pendidikan_lanjut',3)->count();
         return view('pages.dosen.tugasBelajarView')->withDatas($datas)->withS3($s3);
     }

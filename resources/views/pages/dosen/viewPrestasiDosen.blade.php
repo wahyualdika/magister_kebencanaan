@@ -44,9 +44,10 @@
                                 </tr>
                         </tbody>
                 </table>
+                <div class="pagination">
+                  {{ $datas->links('vendor.pagination.bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>
 @endsection
-
-

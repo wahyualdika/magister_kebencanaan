@@ -107,8 +107,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="pagination">
+          {{ $datas->links('vendor.pagination.bootstrap-4') }}
+        </div>
     </div>
     </div>
 @endsection
-
-

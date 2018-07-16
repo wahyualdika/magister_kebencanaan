@@ -6,7 +6,7 @@
     <div>
         <div class="card" style="overflow-x: scroll;white-space: nowrap;">
             <div class="card-body" style=" display: inline-block;">
-                <h5 class="card-title mb-4">List Aksesibilitas Data</h5>
+                <h5 class="card-title mb-4">List Alokasi Dana</h5>
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}

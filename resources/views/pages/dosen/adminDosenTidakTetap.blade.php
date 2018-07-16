@@ -44,10 +44,11 @@
                         </tbody>
                         @endforeach
                         </tbody>
+                        <div class="pagination">
+                          {{ $datas->links('vendor.pagination.bootstrap-4') }}
+                        </div>
                 </table>
             </div>
         </div>
     </div>
 @endsection
-
-

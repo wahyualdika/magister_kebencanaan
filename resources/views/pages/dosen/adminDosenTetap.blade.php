@@ -49,10 +49,11 @@
                         <td>Total Dosen S3      : {{$s3}}</td>
                     </tr>
                     </tbody>
+                    <div class="pagination">
+                      {{ $datas->links('vendor.pagination.bootstrap-4') }}
+                    </div>
                 </table>
             </div>
         </div>
     </div>
 @endsection
-
-
