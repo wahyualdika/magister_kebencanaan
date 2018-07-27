@@ -70,6 +70,10 @@ Route::prefix('dosen')->group(function(){
 
     //Pencarian Dosen
     Route::post('/cari/dosen','DosenController@cariDosen')->name('admin.dosen.cari');
+
+    //Data Per Dosen
+    Route::get('/detail/{id}','DosenController@detailViewDosen')->name('admin.dosen.viewDetail');
+    Route::get('/detail/{id}/{tipeData}','DosenController@detailDataDosen')->name('admin.dosen.viewData');
 });
 
 Route::prefix('publikasi')->group(function(){

@@ -31,6 +31,44 @@ class DosenController extends Controller
       return view('pages.dosen.hasilDosen')->withDatas($datas);
     }
 
+    public function detailViewDosen($id)
+    {
+      $dosen = Dosen::find($id);
+      return view('pages.dosen.detailDosen')->withDosen($dosen);
+    }
+
+    public function detailDataDosen($id,$tipe)
+    {
+      if($tipe == 1)
+      {
+        $data = Prestasi::where('dosen_id',$id)->get();
+        return view('pages.dosen.detailDosen.detailPrestasiDosen')->withData($data);
+      }
+      elseif($tipe == 2)
+      {
+        $data = Pengalaman::where('dosen_id',$id)->get();
+        return view('pages.dosen.detailDosen.detailPengalamanDosen')->withData($data);
+      }
+      elseif($tipe == 3)
+      {
+        $data = Seminar::where('dosen_id',$id)->get();
+        return view('pages.dosen.detailDosen.detailSeminarDosen')->withData($data);
+      }
+      elseif($tipe == 4)
+      {
+        $data = AktivitasDosen::where('dosen_id',$id)->get();
+        return view('pages.dosen.detailDosen.detailAktifitasDosen')->withData($data);
+      }
+      elseif($tipe == 5)
+      {
+          $data = TugasBelajar::where('dosen_id',$id)->get();
+          return view('pages.dosen.detailDosen.detailTugasBelajarDosen')->withData($data);
+      }
+      else {
+          $data = "Silahkan pilih data yang ingin ditampilkan";
+          return view('pages.dosen.detailDataDosen')->withData($data);
+      }
+    }
 
     public function viewDosen()
     {
