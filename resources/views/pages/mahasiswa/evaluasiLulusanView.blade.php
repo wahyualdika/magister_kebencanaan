@@ -52,11 +52,14 @@
                     </tr>
                 </table>
 
-                <p>Rata-rata waktu tunggu lulusan mendapatkan pekerjaan pertama = {!! $datalanjutans->waktu_tunggu !!}</p>
-                <p>Persentase lulusan yang bekerja pada bidang sesuai keahliannya = {!! $datalanjutans->persentase !!} </p>
+                @if($datas->isEmpty())
+                    <p>Rata-rata waktu tunggu lulusan mendapatkan pekerjaan pertama = 0 </p>
+                    <p>Persentase lulusan yang bekerja pada bidang sesuai keahliannya = 0 </p>
+                @else
+                    <p>Rata-rata waktu tunggu lulusan mendapatkan pekerjaan pertama = {!! $datalanjutans->waktu_tunggu !!}</p>
+                    <p>Persentase lulusan yang bekerja pada bidang sesuai keahliannya = {!! $datalanjutans->persentase !!} </p>
+                @endif
             </div>
         </div>
     </div>
 @endsection
-
-

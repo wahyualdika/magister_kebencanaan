@@ -97,6 +97,7 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{!! url('dosen/'.$data->id.'/edit') !!}" class="btn btn-default" style="margin: 0px"><span class="fa fa-edit" style="font-size:24px;margin: 10px"></span></a>
+                                <a href="{!! url('dosen/detail/'.$data->id) !!}" class="btn btn-default" style="margin: 0px"><span class="fa fa-eye" style="font-size:24px;margin: 10px"></span></a>
                                 <button class="btn btn-link" type="submit"><span class="fa fa-times-circle" style="font-size:24px;margin: 10px"></span></button>
                             </div>
                         </td>
