@@ -11,13 +11,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosen.index')}}">
                             <div class="float-left">
-                                <h4 class="text-danger">
-                                    <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                </h4>
-                            </div>
-                            <div class="float-right">
-                                <p class="card-text text-dark">Daftar Semua Dosen</p>
-                                <h4 class="bold-text">Jumlah Dosen</h4>
+                              <p class="card-text text-dark">Daftar Semua Dosen</p>
                             </div>
                             </a>
                         </div>
@@ -30,13 +24,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosen.tetap')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
-                                    <p class="card-text text-dark">Daftar Dosen Tetap</p>
-                                    <h4 class="bold-text">Jumlah Dosen</h4>
+                                  <p class="card-text text-dark">Daftar Dosen Tetap</p>
                                 </div>
                             </a>
                         </div>
@@ -49,13 +37,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosen.tidakTetap')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
                                     <p class="card-text text-dark">Daftar Dosen Tidak Tetap</p>
-                                    <h4 class="bold-text">Jumlah Dosen</h4>
                                 </div>
                             </a>
                         </div>
@@ -68,13 +50,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosenPrestasi.view')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
                                     <p class="card-text text-dark">Daftar Prestasi Dosen</p>
-                                    <h4 class="bold-text">Jumlah Dosen</h4>
                                 </div>
                             </a>
                         </div>
@@ -87,13 +63,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosenPengalaman.view')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
                                     <p class="card-text text-dark">Daftar Pengalaman Dosen</p>
-                                    <h4 class="bold-text">Jumlah Dosen</h4>
                                 </div>
                             </a>
                         </div>
@@ -106,13 +76,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosenSeminar.view')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
                                     <p class="card-text text-dark">Daftar Kegiatan Seminar</p>
-                                    <h4 class="bold-text">Jumlah Dosen</h4>
                                 </div>
                             </a>
                         </div>
@@ -125,13 +89,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosen.aktivitasView')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
-                                    <p class="card-text text-dark">Daftar Aktivitas Dosen</p>
-                                    <h4 class="bold-text">Jumlah</h4>
+                                      <p class="card-text text-dark">Daftar Aktivitas Dosen</p>
                                 </div>
                             </a>
                         </div>
@@ -144,13 +102,7 @@
                         <div class="clearfix">
                             <a href="{{route('admin.dosen.tugasBelajarView')}}">
                                 <div class="float-left">
-                                    <h4 class="text-danger">
-                                        <i class="fa fa fa-user-o highlight-icon" aria-hidden="true"></i>
-                                    </h4>
-                                </div>
-                                <div class="float-right">
-                                    <p class="card-text text-dark">Daftar Tugas Belajar</p>
-                                    <h4 class="bold-text">Jumlah</h4>
+                                      <p class="card-text text-dark">Daftar Tugas Belajar</p>
                                 </div>
                             </a>
                         </div>
@@ -160,5 +112,3 @@
         </div>
     </div>
 @endsection
-
-
